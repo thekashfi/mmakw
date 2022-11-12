@@ -1,5 +1,7 @@
 @extends('website.layout')
 
+@section('title', app()->getLocale()=="en" ? $settingInfo->vision_title_en : $settingInfo->vision_title_ar)
+
 @section('content')
     <!-- subheader -->
     <section id="subheader" data-speed="8" data-type="background" style="background:url({{url('assets/images/slider/slide-3.jpg')}}) no-repeat;">

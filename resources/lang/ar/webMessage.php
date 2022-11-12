@@ -232,7 +232,7 @@ return [
 	'ihavereadtermsconditions'=>'I have read the <a href="javascript:;" id="showTermsBox">Terms & Conditions</a>',
 	'termsconditions'       =>'Terms & Conditions',
 	'submit'                =>'Submit',
-	'websitetext'           =>'',
+	'whoweare'           =>'لورم ایبسوم',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'',

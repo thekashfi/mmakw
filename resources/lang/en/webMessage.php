@@ -226,7 +226,7 @@ return [
 	'submit'                =>'Submit',
 	'footercontactusblue'   =>'Do you need Best Services?',
 	'footercontactusbutton' =>'Contact Us Now',
-	'websitetext'           =>'',
+	'whoweare'           =>'who we are',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
