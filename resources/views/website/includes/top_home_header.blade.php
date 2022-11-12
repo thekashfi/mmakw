@@ -40,7 +40,7 @@
                     <div class="md-flex-col">
                         <nav class="md-flex">
                             <ul id="mainmenu">
-                                <li ><a  href="{{url('/#home')}}">{{__('webMessage.home')}}</a></li>
+                                <li ><a  href="{{url('/')}}">{{__('webMessage.home')}}</a></li>
                                 <li class="menu-item-has-children"><a href="{{url('/#about')}}">{{__('webMessage.whoweare')}}</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{url('/mission')}}">{{__('webMessage.mission')}}</a></li>

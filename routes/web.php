@@ -52,6 +52,15 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/gwc/survey/details/{id}','AdminUserController@detailsSurvey');
 	Route::resource('gwc/newsevents', 'AdminNewsEventsController');
 });
+
+//slider
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/slides/deleteslideImage/{id}','AdminSlidesController@deleteImage');
+    Route::get('/gwc/slides/deleteslideVideo/{id}','AdminSlidesController@deleteVideo');
+    Route::get('/gwc/slides/delete/{id}','AdminSlidesController@destroy');
+    Route::resource('gwc/slides', 'AdminSlidesController', ['except' => 'destroy']);
+});
+
 //contact us
 Route::group(['middleware' => ['admin']], function(){
 	Route::get('/gwc/contactus/subjects', 'AdminInboxController@showSubjects');
@@ -184,7 +193,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/gwc/subscribers/csv', 'AdminUserController@exportSubscriber')->middleware('admin');
 	Route::post('/gwc/subscribers', 'AdminUserController@subscribers')->name('searchSubscribers');
 	//gwc menus
-	Route::get('/gwc/menus', 'AdminMenuController@index')->middleware('admin');;
+	Route::get('/gwc/menus', 'AdminMenuController@index')->middleware('admin');
 	Route::post('/gwc/menus', 'AdminMenuController@index')->name('menusearch');
 	Route::get('/gwc/menus/new', 'AdminMenuController@adminMenusForm')->middleware('admin');
 	Route::post('/gwc/menus/new', 'AdminMenuController@AddRecord')->name('newmenu');
