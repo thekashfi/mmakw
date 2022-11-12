@@ -1,0 +1,11 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ServiceCategory extends Model
+{
+    protected $table = 'gwc_service_categories';
+    protected $fillable = ['name_en', 'name_ar'];
+}

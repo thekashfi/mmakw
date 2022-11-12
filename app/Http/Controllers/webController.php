@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -27,19 +28,19 @@ class webController extends Controller
     {
 	  //get setting details
 	  $settingInfo      = Settings::where("keyname","setting")->first();
-	  //get subject 
+	  //get subject
 	  $subjectLists     = Subjects::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  //get latest news & events
 	  $newseventslists  = NewsEvents::where("is_active","1")->orderBy('news_date', 'DESC')->limit(2)->get();
-	  //get practice area 
+	  //get practice area
 	  $practiceareaMenus= Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	  //get services  
+	  //get services
 	  $servicesMenus    = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	  //get members  
+	  //get members
 	  $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	  
-	  
-      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists'));
+	  $slides           = Slide::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+
+      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides'));
     }
 	
 	//subscribe newsletter email
