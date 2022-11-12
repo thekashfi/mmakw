@@ -1,6 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('website.includes.head')
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="{{url('new_assets')}}/images/icon.png" type="image/gif" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@if(app()->getLocale()=="en") {{$settingInfo->name_en}} @else {{$settingInfo->name_ar}} @endif @hasSection('title')| @yield('title')@endif</title>
+
+    <meta name="description" content="@if(View::hasSection('description')) @yield('description') @else @if(app()->getLocale()=="en") {{$settingInfo->seo_description_en}} @else {{$settingInfo->seo_description_ar}} @endif @endif"/>
+    <meta name="abstract" content="@if(View::hasSection('abstract')) @yield('abstract') @else @if(app()->getLocale()=="en") {{$settingInfo->seo_description_en}} @else {{$settingInfo->seo_description_ar}} @endif @endif">
+    <meta name="keywords" content="@if(View::hasSection('keywords')) @yield('keywords') @else @if(app()->getLocale()=="en") {{$settingInfo->seo_keywords_en}} @else {{$settingInfo->seo_keywords_ar}} @endif @endif"/>
+    <meta name="Copyright" content="{{$settingInfo->name_en}}, Kuwait Copyright 2020 - {{date('Y')}}" />
+    <meta name="author" content="Gulfweb Web Design, Kuwait" />
+    <META NAME="Designer" CONTENT="Gulfweb Web Design Kuwait">
+    <meta name="Country" content="Kuwait" />
+    <META NAME="city" CONTENT="Kuwait City">
+    <META NAME="Language" CONTENT="English">
+    <META NAME="Geography" CONTENT="@if(app()->getLocale()=="en") {{$settingInfo->address_en}} @else {{$settingInfo->address_ar}} @endif">
+    <META NAME="Revisit-After" CONTENT="2 days">
+    <meta name="robots" CONTENT="all">
+    <META NAME="distribution" CONTENT="Global">
+
+    <!-- CSS Files
+    ================================================== -->
+    <link href="{{url('new_assets')}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap" />
+    <link href="{{url('new_assets')}}/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" id="bootstrap-grid" />
+    <link href="{{url('new_assets')}}/css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" id="bootstrap-reboot" />
+    <link href="{{url('new_assets')}}/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="{{url('new_assets')}}/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{url('new_assets')}}/css/color.css" rel="stylesheet" type="text/css">
+
+    <!-- custom background -->
+    <link rel="stylesheet" href="{{url('new_assets')}}/css/bg.css" type="text/css">
+
+    <!-- color scheme -->
+    <link rel="stylesheet" href="{{url('new_assets')}}/css/colors/blue.css" type="text/css" id="colors">
+
+    <!-- revolution slider -->
+    <link rel="stylesheet" href="{{url('new_assets')}}/rs-plugin/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="{{url('new_assets')}}/css/rev-settings.css" type="text/css">
+
+    <!-- custom font -->
+    <link rel="stylesheet" href="{{url('new_assets')}}/css/font-style-2.css" type="text/css">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
 <body id="homepage">
 
     <div id="wrapper">
@@ -49,70 +100,8 @@
             </div>
         </section>
 
-            <!-- footer begin -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <img src="{{url('new_assets')}}/images/logo.png" class="logo-small" alt=""><br> MMA Law understands the business philosophy we are keen to keep the smooth transactions between our clients and the relevant parties, we believe that the smooth transactions will be guaranteed through our involvement before the commencement of business transactions to explain the legal rules which will govern the transactions
-                    </div>
-
-                    <div class="col-lg-5">
-                        <h3>Contact Us</h3>
-                        <div class="widget widget-address">
-                            <address>
-                                <span>Mahboula - Coastal Road - Block 4 Compound 54 - Villa 4, Po Box : 9337 Ahmadi - 61004 Kuwait.</span>
-                                <span><strong>Phone:</strong>(+965) 2227 2212, (+965) 2227 2213</span>
-                                <span><strong>Fax:</strong>(+965) 2227 2213</span>
-                                <span><strong>Email:</strong><a href="mailto:info@mmakw.com">info@mmakw.com</a></span>
-                                <span><strong>Web:</strong><a href="#">https://www.mmakw.com</a></span>
-                            </address>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <div class="widget widget_recent_post">
-                            <h3>Main Menu</h3>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Practice Areas</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Membership &amp; Listings</a></li>
-                                <li><a href="#">News &amp; Events</a></li>
-                                <li><a href="#">Contact us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="subfooter">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            &copy; Copyright 2022 MMA Kuwait - Al Rights Reserved
-                        </div>
-                        <div class="col-md-6 text-right">
-
-                            <div class="social-icons">
-
-                                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                                <div id="google_translate_element" style="float: right; margin-left:30px;"></div>
-                                <script type="text/javascript">
-                                    function googleTranslateElementInit() {
-                                        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                                    }
-                                </script>
-
-                                <a href="https://www.linkedin.com/company/mma-law/" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" id="back-to-top"></a>
-        </footer>
+        <!-- footer begin -->
+        @include('website.includes.home_footer')
         <!-- footer close -->
     </div>
 </div>

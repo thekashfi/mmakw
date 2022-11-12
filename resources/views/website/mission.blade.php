@@ -7,7 +7,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>@if(app()->getLocale()=="en") {{$settingInfo->mission_title_en}} @else  {{$settingInfo->mission_title_ar}} @endif</h1>
-                        @include('website.includes.breadcrumbs')
+                        <ul class="crumb">
+                            <li><a href="{{url('/#home')}}">{{__('webMessage.home')}}</a></li>
+                            <li class="sep">/</li>
+                            <li><a href="{{url('/#about')}}">{{__('webMessage.aboutus')}}</a></li>
+                            <li class="sep">/</li>
+                            <li>{{__('webMessage.mission')}}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
