@@ -64,7 +64,7 @@
                                 <li><a href="{{url('/#services')}}">{{__('webMessage.services')}}</a>
                                     <ul>
                                         @foreach($servicesMenus as $servicesMenu)
-                                        <li><a href="{{url('/services/'.$servicesMenu->slug)}}">@if(app()->getLocale()=='en') {{$servicesMenu->menu_name_en}} @else {{$servicesMenu->menu_name_ar}} @endif</a></li>
+                                        <li><a href="{{url('/services/'.$servicesMenu->slug)}}">@if(app()->getLocale()=='en') {{$servicesMenu->menu_name_ar}} @else {{$servicesMenu->menu_name_ar}} @endif</a></li>
                                         @endforeach
                                     </ul>
                                 </li>

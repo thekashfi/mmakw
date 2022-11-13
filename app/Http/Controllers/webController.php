@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\ServiceCategory;
 use App\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -39,8 +40,9 @@ class webController extends Controller
 	  //get members
 	  $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  $slides           = Slide::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	  $service_categories= ServiceCategory::orderBy('display_order', $settingInfo->default_sort)->with('services')->has('services')->get();
 
-      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides'));
+      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories'));
     }
 	
 	//subscribe newsletter email

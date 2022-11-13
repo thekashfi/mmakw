@@ -40,148 +40,41 @@
 
                     <div class="spacer-single"></div>
 
-                    <!-- portfolio filter begin -->
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <ul id="filters" class="wow fadeInUp" data-wow-delay="0s">
-                                <li><a href="#" data-filter="*" class="selected">All Services</a></li>
-                                <li><a href="#" data-filter=".residential">ADR &amp; Arbitration</a></li>
-                                <li><a href="#" data-filter=".hospitaly"> Banking &amp; Finance </a></li>
-                                <li><a href="#" data-filter=".office"> Merger &amp; Acquisition </a></li>
-                                <li><a href="#" data-filter=".commercial">General Corporate &amp; Commercial</a></li>
-                            </ul>
+                    @if(count($service_categories))
+                        <!-- portfolio filter begin -->
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <ul id="filters" class="wow fadeInUp" data-wow-delay="0s">
+                                    <li><a href="#" data-filter="*" class="selected">{{ __('webMessage.all_services') }}</a></li>
+                                    @foreach($service_categories as $s_category)
+                                        <li><a href="#" data-filter=".cat-{{ $s_category->id }}">{{ $s_category["name_" . app()->getLocale()] }}</a></li>
+                                    @endforeach
+                                </ul>
 
+                            </div>
                         </div>
-                    </div>
-                    <!-- portfolio filter close -->
-
+                        <!-- portfolio filter close -->
+                    @endif
                 </div>
 
                 <div id="gallery" class="gallery full-gallery de-gallery pf_full_width wow fadeInUp" data-wow-delay=".3s">
 
-                    <!-- gallery item -->
-                    <div class="item residential">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-1.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">ADR &amp; Arbitration</span>
+                    @foreach($servicesMenus as $srv)
+                        <!-- gallery item -->
+                        <div class="item cat-{{ $srv->category_id }}">
+                            <div class="picframe">
+                                <a href="{{url('/services/'.$srv->slug)}}">
+                                    <span class="overlay">
+                                        <span class="pf_text">
+                                            <span class="project-name">{{ $srv["title_" . app()->getLocale()] }}</span>
+                                        </span>
                                     </span>
-                                </span>
-                            </a>
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(1).jpg" alt="" />
+                                </a>
+                                <img src="{{url('uploads/services')}}/{{ $srv->image }}" alt="{{ $srv["title_" . app()->getLocale()] }}" />
+                            </div>
                         </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item hospitaly">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-2.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">Banking &amp; Finance</span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(2).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item hospitaly">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-3.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">Merger &amp; Acquisition</span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(3).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item residential">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-youtube.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">General Corporate &amp; Commercial</span>
-                                    </span>
-                                </span>
-                            </a>
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(4).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item office">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-vimeo.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name"> Administrative Law &amp; Governmental Sector </span>
-                                    </span>
-                                </span>
-                            </a>
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(5).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item commercial">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">General Corporate &amp; Commercial</span>
-                                    </span>
-                                </span>
-                            </a>
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(6).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item residential">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-youtube.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">Governmental Compliance</span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(7).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
-
-                    <!-- gallery item -->
-                    <div class="item office">
-                        <div class="picframe">
-                            <a class="simple-ajax-popup-align-top" href="project-details-vimeo.html">
-                                <span class="overlay">
-                                    <span class="pf_text">
-                                        <span class="project-name">Claims Preparation</span>
-                                    </span>
-                                </span>
-                            </a>
-
-                            <img src="{{url('new_assets')}}/images/portfolio/cols-4/pf%20(8).jpg" alt="" />
-                        </div>
-                    </div>
-                    <!-- close gallery item -->
+                        <!-- close gallery item -->
+                    @endforeach()
 
                 </div>
 

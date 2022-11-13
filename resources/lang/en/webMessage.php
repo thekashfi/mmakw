@@ -227,7 +227,7 @@ return [
 	'footercontactusblue'   =>'Do you need Best Services?',
 	'footercontactusbutton' =>'Contact Us Now',
 	'whoweare'           =>'who we are',
-	'websitetext'           =>'',
+	'all_services'          =>'All Services',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'',

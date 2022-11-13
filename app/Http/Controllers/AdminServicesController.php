@@ -129,7 +129,7 @@ class AdminServicesController extends Controller
 		$slug = new ServicesSlug;
 		
 		$services->slug=$slug->createSlug($request->title_en);
-        $services->category_id=$request->input('category_id') != 'null' ? $request->input('display_order') : null;
+        $services->category_id=$request->input('category_id') != 'null' ? $request->input('category_id') : null;
         $services->menu_name_en=$request->input('menu_name_en');
 		$services->menu_name_ar=$request->input('menu_name_ar');
 		$services->title_en=$request->input('title_en');
@@ -267,9 +267,8 @@ class AdminServicesController extends Controller
 	
 	//slug
 		$slug = new ServicesSlug;
-		
 		$services->slug=$slug->createSlug($request->title_en,$id);
-        $services->category_id=$request->input('category_id') != 'null' ? $request->input('display_order') : null;
+        $services->category_id=$request->input('category_id') != 'null' ? $request->input('category_id') : null;
 		$services->menu_name_en=$request->input('menu_name_en');
 		$services->menu_name_ar=$request->input('menu_name_ar');
 		$services->title_en=$request->input('title_en');

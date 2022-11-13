@@ -233,7 +233,7 @@ return [
 	'termsconditions'       =>'Terms & Conditions',
 	'submit'                =>'Submit',
 	'whoweare'           =>'لورم ایبسوم',
-	'websitetext'           =>'',
+	'all_services'           =>'الکل',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'', 
