@@ -233,7 +233,7 @@ return [
 	'contact_info'          =>'Contact Info',
 	'fax'                   =>'Fax',
     'send_us_message'       =>'Send Us Message',
-	'websitetext'           =>'',
+    'web'                   =>'Web',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'',

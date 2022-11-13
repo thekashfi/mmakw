@@ -237,6 +237,7 @@ return [
     'more_details'          =>'توضیحات اضافی',
     'address'               =>'لورم',
     'fax'                   =>'لورم',
+    'web'                   =>'لورم',
     'send_us_message'       =>'لورم ایبسوم',
 	'websitetext'           =>'',
 	'websitetext'           =>'', 

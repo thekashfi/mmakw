@@ -8,17 +8,30 @@
           {{$settingInfo->footer_about}}
       </div>
 
+
+
+
+
+
+
+
       <div class="col-lg-5">
-        <h3>{{__('webMessage.contactus')}}</h3>
-        <div class="widget widget-address">
-          <address>
-            <span>{{$settingInfo->address_en}}</span>
-            <span><strong>Phone:</strong>(+965) 2227 2212, (+965) 2227 2213</span>
-            <span><strong>Fax:</strong>(+965) 2227 2213</span>
-            <span><strong>Email:</strong><a href="mailto:info@mmakw.com">info@mmakw.com</a></span>
-            <span><strong>Web:</strong><a href="#">https://www.mmakw.com</a></span>
-          </address>
-        </div>
+          <h3>{{__('webMessage.contactus')}}</h3>
+          <div class="widget widget-address">
+              <address>
+                <span>{{$settingInfo['address_' . app()->getLocale()]}}</span>
+                @if($settingInfo->phone)
+                    <span><strong>{{__('webMessage.phone')}}:</strong>(+965) 2227 2212, (+965) 2227 2213</span>
+                @endif
+                @if($settingInfo->fax)
+                    <span><strong>{{__('webMessage.fax')}}:</strong>{{$settingInfo->fax}}</span>
+                @endif
+                @if($settingInfo->email)
+                    <span><strong>{{__('webMessage.email')}}:</strong><a href="mailto:{{$settingInfo->email}}">{{$settingInfo->email}}</a></span>
+                @endif
+                <span><strong>{{__('webMessage.web')}}:</strong><a href="{{ url('') }}">{{ url('') }}</a></span>
+              </address>
+          </div>
       </div>
 
       <div class="col-lg-3">
@@ -56,7 +69,21 @@
               }
             </script>
 
-            <a href="https://www.linkedin.com/company/mma-law/" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+            @if($settingInfo->social_facebook)
+              <a href="{{$settingInfo->social_facebook}}" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+            @endif
+            @if($settingInfo->social_twitter)
+              <a href="{{$settingInfo->social_twitter}}" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+            @endif
+            @if($settingInfo->social_instagram)
+              <a href="{{$settingInfo->social_instagram}}" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+            @endif
+            @if($settingInfo->social_youtube)
+              <a href="{{$settingInfo->social_youtube}}" target="_blank"><i class="fa fa-youtube fa-lg"></i></a>
+            @endif
+            @if($settingInfo->social_linkedin)
+              <a href="{{$settingInfo->social_linkedin}}" target="_blank"><i class="fa fa-linkedin fa-lg"></i></a>
+            @endif
           </div>
         </div>
       </div>

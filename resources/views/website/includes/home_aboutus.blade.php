@@ -1,5 +1,5 @@
-<section id="section-about-us-2 about" class="side-bg no-padding">
-    <div class="image-container col-md-5 pull-left" data-delay="0" style='{{ $settingInfo->image ? "background: url(url(uploads/aboutus/$settingInfo->image)" : '' }}'></div>
+<section id="about" class="side-bg no-padding">
+    <div class="image-container col-md-5 pull-left" data-delay="0" style='{{ $settingInfo->image ? "background: url(uploads/aboutus/$settingInfo->image)" : '' }}'></div>
 
     <div class="container">
         <div class="row">
