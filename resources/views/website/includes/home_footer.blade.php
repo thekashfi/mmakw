@@ -41,15 +41,15 @@
   <div class="subfooter">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" class="{{ app()->getLocale() == 'ar' ? 'text-left' : '' }}">
           &copy; Copyright 2022 MMA Kuwait - Al Rights Reserved
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-6 text-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }}">
 
           <div class="social-icons">
 
             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-            <div id="google_translate_element" style="float: right; margin-left:30px;"></div>
+            <div id="google_translate_element" style="float: right; margin-{{ app()->getLocale() == 'ar' ? 'right' : 'left' }}:30px;"></div>
             <script type="text/javascript">
               function googleTranslateElementInit() {
                 new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');

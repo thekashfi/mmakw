@@ -62,7 +62,7 @@
 
         @yield('content')
 
-        <section>
+        <section class="{{ app()->getLocale() == 'ar' ? 'rtl' : '' }}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">

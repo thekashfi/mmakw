@@ -234,7 +234,7 @@ return [
 	'submit'                =>'Submit',
 	'whoweare'           =>'لورم ایبسوم',
 	'all_services'           =>'الکل',
-	'websitetext'           =>'',
+    'more_details'          =>'توضیحات اضافی',
 	'websitetext'           =>'',
 	'websitetext'           =>'', 
 	'websitetext'           =>'',
