@@ -72,7 +72,7 @@
 
                                 <li><a href="{{url('/members')}}">{{__('webMessage.membershiplistings')}}</a></li>
                                 <li><a href="{{url('/news')}}">{{__('webMessage.newsevents')}}</a></li>
-                                <li><a href="{{url('/#contact')}}">{{__('webMessage.contactus')}}</a></li>
+                                <li><a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a></li>
 
 {{--                                @if(empty(Auth::guard('webs')->user()->id))--}}
 {{--                                    @if(app()->getLocale()=='en')--}}

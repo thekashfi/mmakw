@@ -49,6 +49,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style>.g-recaptcha {transform:scale(0.90);transform-origin:0 0;}</style>
+
 </head>
 
 
@@ -94,7 +97,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-5 text-right">
-                        <a href="{{url('/#contact')}}" class="btn-line black wow fadeInUp">{{__('webMessage.footercontactusbutton')}}</a>
+                        <a href="{{url('/contactus')}}" class="btn-line black wow fadeInUp">{{__('webMessage.footercontactusbutton')}}</a>
                     </div>
                 </div>
             </div>

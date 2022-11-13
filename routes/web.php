@@ -233,6 +233,7 @@ Route::group(['middleware' => ['admin']], function() {
 	
 	Route::get('/','webController@index');
 	Route::post('/subscribe_newsletter','webController@subscribe_newsletter');
+	Route::get('/contactus','webController@contactus');
 	Route::post('/contactform','webController@contactform')->name('contactform');
 	Route::get('/newsdetails/{slug}','webController@newsdetails');
 	Route::get('/mission','webController@mission');

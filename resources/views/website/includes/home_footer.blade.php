@@ -5,7 +5,7 @@
 
         @if($settingInfo->logo)<a class="navbar-brand" href="{{url('/#home')}}"><img src="{{url('uploads/logo/'.$settingInfo->logo)}}" class="logo-small" alt="@if(app()->getLocale()=='en') {{$settingInfo->name_en}} @else {{$settingInfo->name_ar}} @endif"></a>@endif
         <br>
-        MMA Law understands the business philosophy we are keen to keep the smooth transactions between our clients and the relevant parties, we believe that the smooth transactions will be guaranteed through our involvement before the commencement of business transactions to explain the legal rules which will govern the transactions
+          {{$settingInfo->footer_about}}
       </div>
 
       <div class="col-lg-5">
@@ -25,13 +25,13 @@
         <div class="widget widget_recent_post">
           <h3>Main Menu</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Practice Areas</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Membership &amp; Listings</a></li>
-            <li><a href="#">News &amp; Events</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="{{url('/')}}">{{__('webMessage.home')}}</a></li>
+            <li><a href="{{url('/#about')}}">{{__('webMessage.aboutus')}}</a></li>
+            <li><a href="#">{{__('webMessage.practicearea')}}</a></li>
+            <li><a href="{{url('/#services')}}">{{__('webMessage.services')}}</a></li>
+            <li><a href="{{url('/members')}}">{{__('webMessage.membershiplistings')}}</a></li>
+            <li><a href="{{url('/news')}}">{{__('webMessage.newsevents')}}</a></li>
+            <li><a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a></li>
           </ul>
         </div>
       </div>

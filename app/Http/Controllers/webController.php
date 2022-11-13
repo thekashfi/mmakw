@@ -46,7 +46,19 @@ class webController extends Controller
     }
 	
 	//subscribe newsletter email
-	
+
+    public function contactus()
+    {
+        $settingInfo    = Settings::where("keyname","setting")->first();
+        //get practice area
+        $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        //get services
+        $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        //get members
+        $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        return view('website.contactus',compact('settingInfo','practiceareaMenus','servicesMenus','memberslists'));
+    }
+
 	public function subscribe_newsletter(Request $request){
 	 //field validation
 	 $validator = Validator::make($request->all(),['newsletter_email'=>'required|email|min:3|max:150|string|unique:gwc_newsletter,newsletter_email']);
@@ -100,18 +112,18 @@ class webController extends Controller
 			]
 			);
 	    if ($validator->fails()) {
-            return redirect('/#contact')
+            return redirect('/contactus#form')
                         ->withErrors($validator)
                         ->withInput();
         }
-		
+
 	 $grecaptcharesponse = !empty($request->input('g-recaptcha-response'))?$request->input('g-recaptcha-response'):'';
 	 if(empty($grecaptcharesponse)){
-	 return redirect('/#contact')
+	 return redirect('/contactus#form')
                         ->with(['message-failed'=>'Invalid captcha'])
                         ->withInput();
 	 }
-	 
+
 	 $recaptchaValidate = Common::VerifyCaptcha($grecaptcharesponse);
 	 if($recaptchaValidate){
 	 		
@@ -165,13 +177,13 @@ class webController extends Controller
 	 'email_replyto' =>'info@mmakw.com',
 	 'email_replyto_name' =>'mmakw.com'
 	 ];
-     Mail::to($settingInfo->email)->send(new SendGrid($dataadmin));	 
+     Mail::to($settingInfo->email)->send(new SendGrid($dataadmin));
 	 }
 	 //end sending email	
-	 return redirect('/#contact')->with('message-success',trans('webMessage.contact_message_sent'));	
+	 return redirect('/contactus#form')->with('message-success',trans('webMessage.contact_message_sent'));
 	 }else{
-	 return redirect('/#contact')->with('message-failed','Invalid Recaptcha Validation');	
-	 }	
+	 return redirect('/contactus#form')->with('message-failed','Invalid Recaptcha Validation');
+	 }
 	}
 	
 	//get news details
