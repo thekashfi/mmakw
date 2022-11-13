@@ -244,8 +244,19 @@
                                                                @endif
                                                 </div>
                                             </div>
-                                            
-                                                     
+
+
+											<div class="form-group">
+												<div class="col-lg-6">
+													<label for="category_id">Category:</label>
+													<select class="form-control" id="category_id">
+														<option selected value="null">&lt;null&gt;</option>
+														@foreach($categories as $category)
+															<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
                                                      
 											</div>
 											<div class="kt-portlet__foot">

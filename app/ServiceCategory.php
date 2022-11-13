@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceCategory extends Model
 {
     protected $table = 'gwc_service_categories';
-    protected $fillable = ['name_en', 'name_ar'];
+    protected $fillable = ['display_order', 'name_en', 'name_ar'];
 }

@@ -53,12 +53,18 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::resource('gwc/newsevents', 'AdminNewsEventsController');
 });
 
-//slider
+//slides
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/slides/deleteslideImage/{id}','AdminSlidesController@deleteImage');
     Route::get('/gwc/slides/deleteslideVideo/{id}','AdminSlidesController@deleteVideo');
     Route::get('/gwc/slides/delete/{id}','AdminSlidesController@destroy');
     Route::resource('gwc/slides', 'AdminSlidesController', ['except' => 'destroy']);
+});
+
+//service-categories
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/service-categories/delete/{id}','AdminServiceCategoriesController@destroy');
+    Route::resource('gwc/service-categories', 'AdminServiceCategoriesController', ['except' => 'destroy']);
 });
 
 //contact us

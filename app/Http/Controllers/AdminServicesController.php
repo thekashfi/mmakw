@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ServiceCategory;
 use Illuminate\Http\Request;
 use App\Services;
 use App\Settings;
@@ -128,7 +129,8 @@ class AdminServicesController extends Controller
 		$slug = new ServicesSlug;
 		
 		$services->slug=$slug->createSlug($request->title_en);
-		$services->menu_name_en=$request->input('menu_name_en');
+        $services->category_id=$request->input('category_id') != 'null' ? $request->input('display_order') : null;
+        $services->menu_name_en=$request->input('menu_name_en');
 		$services->menu_name_ar=$request->input('menu_name_ar');
 		$services->title_en=$request->input('title_en');
 		$services->title_ar=$request->input('title_ar');
@@ -163,7 +165,8 @@ class AdminServicesController extends Controller
     public function edit($id)
     {
 	    $editservices = Services::find($id);
-        return view('gwc.services.edit',compact('editservices'));
+        $categories = ServiceCategory::get();
+        return view('gwc.services.edit',compact('editservices', 'categories'));
     }
 	
 	
@@ -266,6 +269,7 @@ class AdminServicesController extends Controller
 		$slug = new ServicesSlug;
 		
 		$services->slug=$slug->createSlug($request->title_en,$id);
+        $services->category_id=$request->input('category_id') != 'null' ? $request->input('display_order') : null;
 		$services->menu_name_en=$request->input('menu_name_en');
 		$services->menu_name_ar=$request->input('menu_name_ar');
 		$services->title_en=$request->input('title_en');

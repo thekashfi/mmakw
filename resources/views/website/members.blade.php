@@ -25,12 +25,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-
+                        @if(count($memberslistsds))
                             @foreach($memberslistsds as $memberslist)
                                 <img src="{{url('uploads/memberships/'.$memberslist->image)}}" alt="" class="pic_left w-100" style="max-width: 370px;">
                                 {!! app()->getLocale()=="en" ? $memberslist->details_en : $memberslist->details_ar !!}
                                 <div class="clear30x"></div>
                             @endforeach
+                        @endif
                         </div>
                     </div>
                 </div>
