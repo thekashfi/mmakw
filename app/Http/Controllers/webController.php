@@ -41,8 +41,9 @@ class webController extends Controller
 	  $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  $slides           = Slide::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  $service_categories= ServiceCategory::orderBy('display_order', $settingInfo->default_sort)->with('services')->has('services')->get();
+	  $clients           = Clients::where("is_active","1")->whereNotNull('image')->where('image', '!=', '')->take(10)->get();
 
-      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories'));
+      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories','clients'));
     }
 	
 	//subscribe newsletter email

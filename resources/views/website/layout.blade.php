@@ -65,29 +65,26 @@
 
         @yield('content')
 
-        <section class="{{ app()->getLocale() == 'ar' ? 'rtl' : '' }}">
+        @if(count($clients))
+            <section class="{{ app()->getLocale() == 'ar' ? 'rtl' : '' }}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                        <h1>Our Clients</h1>
+                        <h1>{{__('webMessage.our_clients')}}</h1>
                         <div class="separator"><span><i class="fa fa-circle"></i></span></div>
                         <div class="spacer-single"></div>
                     </div>
                     <div class="col-md-12">
                         <div id="logo-carousel" class="owl-carousel owl-theme">
-                            <img src="{{url('new_assets')}}/images/logo/1.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/2.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/3.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/4.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/5.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/6.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/7.png" class="img-responsive" alt="">
-                            <img src="{{url('new_assets')}}/images/logo/8.png" class="img-responsive" alt="">
+                            @foreach($clients as $client)
+                                <img src="{{url('uploads/clients')}}/{{ $client->image }}" class="img-responsive p-3" alt="">
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        @endif
 
         <section id="call-to-action" class="bg-color call-to-action text-light padding40" aria-label="cta">
             <div class="container">

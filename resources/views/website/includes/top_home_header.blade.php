@@ -54,7 +54,9 @@
                                         <a href="{{url('/#home')}}">{{__('webMessage.practicearea')}}</a>
                                         <ul class="sub-menu" style="width:290px;">
                                             @foreach($practiceareaMenus as $practiceareaMenu)
-                                                <li><a href="{{url('/practice/'.$practiceareaMenu->slug)}}">@if(app()->getLocale()=='en') {{$practiceareaMenu->menu_name_en}} @else {{$practiceareaMenu->menu_name_ar}} @endif</a></li>
+                                                <li><a href="{{url('/practice/'.$practiceareaMenu->slug)}}" class="w-100">
+                                                        @if(app()->getLocale()=='en') {{$practiceareaMenu->menu_name_en}} @else {{$practiceareaMenu->menu_name_ar}} @endif
+                                                </a></li>
                                             @endforeach
                                         </ul>
                                     </li>

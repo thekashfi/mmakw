@@ -234,7 +234,7 @@ return [
 	'fax'                   =>'Fax',
     'send_us_message'       =>'Send Us Message',
     'web'                   =>'Web',
-	'websitetext'           =>'',
+	'our_clients'           =>'Our Clients',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
