@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Box;
+use App\NewsCategory;
 use App\ServiceCategory;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -201,8 +202,9 @@ class webController extends Controller
 	   $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	   //get members  
 	   $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	 	
-	 return view('website.newsdetails',compact('settingInfo','newsdetails','practiceareaMenus','servicesMenus','memberslists'));
+       $news_categories  = NewsCategory::withCount('news')->orderBy('news_count', 'desc')->has('news')->with('news')->get();
+
+	 return view('website.newsdetails',compact('settingInfo','newsdetails','practiceareaMenus','servicesMenus','memberslists','news_categories'));
 	}
 	
 	//get news details
@@ -313,8 +315,11 @@ class webController extends Controller
 	  $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  //get members  
 	  $memberslists      = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	  //get members  
-	  $NewsLists         = NewsEvents::where("is_active","1")->orderBy('news_date', 'desc')->with('category')->paginate($settingInfo->item_per_page_back);
+	  //get members
+      if(request()->filled('cat'))
+	    $NewsLists         = NewsEvents::where("is_active","1")->where("category_id", NewsCategory::whereSlug(request()->cat)->firstOrFail()->id)->orderBy('news_date', 'desc')->with('category')->paginate($settingInfo->item_per_page_back);
+      else
+        $NewsLists         = NewsEvents::where("is_active","1")->orderBy('news_date', 'desc')->with('category')->paginate($settingInfo->item_per_page_back);
 	  
 	 return view('website.news',compact('settingInfo','practiceareaMenus','servicesMenus','NewsLists','memberslists'));
 	 

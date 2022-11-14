@@ -161,6 +161,17 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <div class="col-lg-6">
+                                                <label>{{__('adminMessage.slug')}}</label>
+                                                <input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug"
+                                                       value="{{old('slug', $category->slug)}}" autocomplete="off" placeholder="{{__('adminMessage.enter_slug')}}" />
+                                                @if($errors->has('slug'))
+                                                    <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                     <div class="kt-portlet__foot">

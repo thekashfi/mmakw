@@ -1,6 +1,6 @@
 @extends('website.layout')
 
-@section('title', app()->getLocale()=="en" ? $settingInfo->mission_title_en : $settingInfo->mission_title_ar)
+@section('title', __('webMessage.newsevents'))
 
 @section('content')
 

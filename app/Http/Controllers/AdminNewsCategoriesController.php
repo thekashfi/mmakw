@@ -37,6 +37,7 @@ class AdminNewsCategoriesController extends Controller
         $this->validate($request, [
             'name_en'     => 'required|max:255|string',
             'name_ar'     => 'required|max:255|string',
+            'slug'     => 'required|max:100|string',
         ]);
 
         $category = NewsCategory::create($request->all());
@@ -68,6 +69,7 @@ class AdminNewsCategoriesController extends Controller
         $this->validate($request, [
             'name_en'     => 'required|max:255|string',
             'name_ar'     => 'required|max:255|string',
+            'slug'     => 'required|max:100|string',
         ]);
 
         $category = NewsCategory::find($id);

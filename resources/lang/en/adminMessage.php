@@ -405,4 +405,6 @@ return [
     'editservicegategory'   => 'Edit Service Category',
     'editnewsgategory'   => 'Edit News Category',
     'boxes'   => 'Boxes',
+    'slug' => 'Url Address',
+    'enter_slug' => 'Enter Url Address',
 ];

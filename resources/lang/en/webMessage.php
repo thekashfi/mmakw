@@ -237,6 +237,8 @@ return [
 	'our_clients'           =>'Our Clients',
 	'next'                  =>'Next',
 	'prev'                  =>'Prev',
+    'recent_posts' => 'Recent Posts',
+    'tags' => 'Tags',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 
