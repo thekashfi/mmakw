@@ -3,7 +3,7 @@
 <!-- begin::Head -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.editnewsgategory')}}</title>
+    <title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.editattribute')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--css files -->
     @include('gwc.css.user')
@@ -60,14 +60,14 @@
                     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                         <div class="kt-container  kt-container--fluid ">
                             <div class="kt-subheader__main">
-                                <h3 class="kt-subheader__title">{{__('adminMessage.newscategory')}}</h3>
+                                <h3 class="kt-subheader__title">{{__('adminMessage.attributes')}}</h3>
                                 <span class="kt-subheader__separator kt-hidden"></span>
                                 <div class="kt-subheader__breadcrumbs">
                                     <a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i
                                                 class="flaticon2-shelter"></i></a>
                                     <span class="kt-subheader__breadcrumbs-separator"></span>
                                     <a href="javascript:;"
-                                       class="kt-subheader__breadcrumbs-link">{{__('adminMessage.editnewsgategory')}}</a>
+                                       class="kt-subheader__breadcrumbs-link">{{__('adminMessage.editattribute')}}</a>
                                 </div>
                             </div>
 
@@ -102,16 +102,16 @@
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
-                                    <h3 class="kt-portlet__head-title">{{__('adminMessage.editnewsgategory')}}</h3>
+                                    <h3 class="kt-portlet__head-title">{{__('adminMessage.editattribute')}}</h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
                                     <div class="kt-portlet__head-wrapper">
                                         <div class="kt-portlet__head-actions">
 
                                             @if(auth()->guard('admin')->user()->can('services-list'))
-                                                <a href="{{url('gwc/news-categories')}}"
+                                                <a href="{{url('gwc/attributes')}}"
                                                    class="btn btn-brand btn-elevate btn-icon-sm"><i
-                                                            class="la la-list-ul"></i>{{__('adminMessage.listcategories')}}
+                                                            class="la la-list-ul"></i>{{__('adminMessage.listattributes')}}
                                                 </a>
                                             @endif
                                         </div>
@@ -122,7 +122,7 @@
                             @if(auth()->guard('admin')->user()->can('services-edit'))
                                 <form name="tFrm" id="form_validation" method="post" class="kt-form"
                                       enctype="multipart/form-data"
-                                      action="{{route('news-categories.update',$category->id)}}">
+                                      action="{{route('attributes.update',$attribute->id)}}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     @method('put')
                                     <div class="kt-portlet__body">
@@ -132,7 +132,7 @@
 {{--                                                <div class="form-group row">--}}
 {{--                                                    <label class="col-3 col-form-label">{{__('adminMessage.displayorder')}}</label>--}}
 {{--                                                    <div class="col-3">--}}
-{{--                                                        <input type="text" class="form-control @if($errors->has('display_order')) is-invalid @endif" name="display_order"  value="{{ old('display_order', $category->display_order) }}" autocomplete="off" />--}}
+{{--                                                        <input type="text" class="form-control @if($errors->has('display_order')) is-invalid @endif" name="display_order"  value="{{ old('display_order', $attribute->display_order) }}" autocomplete="off" />--}}
 {{--                                                        @if($errors->has('display_order'))--}}
 {{--                                                            <div class="invalid-feedback">{{ $errors->first('display_order') }}</div>--}}
 {{--                                                        @endif--}}
@@ -144,34 +144,70 @@
                                         <!--categories name -->
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>{{__('adminMessage.name_en')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('name_en')) is-invalid @endif" name="name_en"
-                                                       value="{{ old('name_en', $category->name_en) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_name_en')}}" />
-                                                @if($errors->has('name_en'))
-                                                    <div class="invalid-feedback">{{ $errors->first('name_en') }}</div>
+                                                <label>{{__('adminMessage.title_en')}}</label>
+                                                <input type="text" class="form-control @if($errors->has('title_en')) is-invalid @endif" name="title_en"
+                                                       value="{{ old('title_en', $attribute->title_en) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_title_en')}}" />
+                                                @if($errors->has('title_en'))
+                                                    <div class="invalid-feedback">{{ $errors->first('title_en') }}</div>
                                                 @endif
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>{{__('adminMessage.name_ar')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('name_ar')) is-invalid @endif" name="name_ar"
-                                                       value="{{ old('name_ar', $category->name_ar) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_name_ar')}}" />
-                                                @if($errors->has('name_ar'))
-                                                    <div class="invalid-feedback">{{ $errors->first('name_ar') }}</div>
+                                                <label>{{__('adminMessage.title_ar')}}</label>
+                                                <input type="text" class="form-control @if($errors->has('title_ar')) is-invalid @endif" name="title_ar"
+                                                       value="{{ old('title_ar', $attribute->title_ar) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_title_ar')}}" />
+                                                @if($errors->has('title_ar'))
+                                                    <div class="invalid-feedback">{{ $errors->first('title_ar') }}</div>
                                                 @endif
                                             </div>
                                         </div>
 
+                                        <!--categories name -->
                                         <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>{{__('adminMessage.slug')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug"
-                                                       value="{{old('slug', $category->slug)}}" autocomplete="off" placeholder="{{__('adminMessage.enter_slug')}}" />
-                                                @if($errors->has('slug'))
-                                                    <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
+                                            <div class="col-lg-12">
+                                                <label>{{__('adminMessage.description_en')}}</label>
+                                                <input type="text" class="form-control @if($errors->has('description_en')) is-invalid @endif" name="description_en"
+                                                       value="{{ old('description_en', $attribute->description_en) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_description_en')}}" />
+                                                @if($errors->has('description_en'))
+                                                    <div class="invalid-feedback">{{ $errors->first('description_en') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <label>{{__('adminMessage.description_ar')}}</label>
+                                                <input type="text" class="form-control @if($errors->has('description_ar')) is-invalid @endif" name="description_ar"
+                                                       value="{{ old('description_ar', $attribute->description_ar) }}" autocomplete="off" placeholder="{{__('adminMessage.description_ar')}}" />
+                                                @if($errors->has('description_ar'))
+                                                    <div class="invalid-feedback">{{ $errors->first('description_ar') }}</div>
                                                 @endif
                                             </div>
                                         </div>
 
+
+
+                                        <!--parent categories dropdown -->
+                                        <div class="form-group row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group row">
+                                                    <label class="col-3 col-form-label">{{__('adminMessage.isactive')}}</label>
+                                                    <div class="col-3">
+														<span class="kt-switch">
+															<label>
+																<input type="checkbox" checked="checked" name="is_active"  id="is_active" value="{{ old('is_active', $attribute->is_active) }}"/>
+																<span></span>
+															</label>
+														</span>
+                                                    </div>
+                                                    <label class="col-3 col-form-label">{{__('adminMessage.displayorder')}}</label>
+                                                    <div class="col-3">
+                                                        <input type="text" class="form-control @if($errors->has('display_order')) is-invalid @endif" name="display_order"  value="{{ old('display_order', $attribute->display_order) }}" autocomplete="off" />
+                                                        @if($errors->has('display_order'))
+                                                            <div class="invalid-feedback">{{ $errors->first('display_order') }}</div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                     <div class="kt-portlet__foot">

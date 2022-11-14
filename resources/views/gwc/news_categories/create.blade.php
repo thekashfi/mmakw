@@ -135,7 +135,7 @@
                                        <!--categories name -->
                                                 <div class="form-group row">
                                                 <div class="col-lg-6">
-                                                <label>{{__('adminMessage.title_en')}}</label>
+                                                <label>{{__('adminMessage.name_en')}}</label>
                                                 <input type="text" class="form-control @if($errors->has('name_en')) is-invalid @endif" name="name_en"
                                                                value="{{old('name_en')}}" autocomplete="off" placeholder="{{__('adminMessage.enter_name_en')}}" />
                                                                @if($errors->has('name_en'))

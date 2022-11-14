@@ -405,6 +405,11 @@ return [
     'editservicegategory'   => 'Edit Service Category',
     'editnewsgategory'   => 'Edit News Category',
     'boxes'   => 'Boxes',
-    'slug' => 'Url Address',
+    'slug' => 'Slug',
     'enter_slug' => 'Enter Url Address',
+    'attributes' => 'Attributes',
+    'attributeslisting' => 'Attributes Listing',
+    'createattribute' => 'Create Attribute',
+    'listattributes' => 'List Attribute',
+    'editattribute' => 'Edit Attribute',
 ];

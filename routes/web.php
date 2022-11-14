@@ -67,6 +67,12 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/boxes', 'AdminBoxesController', ['except' => 'destroy']);
 });
 
+//attributes
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/attributes/delete/{id}','AdminAttributesController@destroy');
+    Route::resource('gwc/attributes', 'AdminAttributesController', ['except' => 'destroy']);
+});
+
 //service-categories
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/service-categories/delete/{id}','AdminServiceCategoriesController@destroy');
