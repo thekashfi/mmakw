@@ -5,7 +5,7 @@
 
         @if($settingInfo->logo)<a class="navbar-brand" href="{{url('/#home')}}"><img src="{{url('uploads/logo/'.$settingInfo->logo)}}" class="logo-small" alt="@if(app()->getLocale()=='en') {{$settingInfo->name_en}} @else {{$settingInfo->name_ar}} @endif"></a>@endif
         <br>
-          {{$settingInfo->footer_about}}
+          {{app()->getLocale() == 'en' ? $settingInfo->footer_about_en : $settingInfo->footer_about_ar}}
       </div>
 
 
@@ -21,7 +21,7 @@
               <address>
                 <span>{{$settingInfo['address_' . app()->getLocale()]}}</span>
                 @if($settingInfo->phone)
-                    <span><strong>{{__('webMessage.phone')}}:</strong>(+965) 2227 2212, (+965) 2227 2213</span>
+                    <span><strong>{{__('webMessage.phone')}}:</strong>{{$settingInfo->phone}}</span>
                 @endif
                 @if($settingInfo->fax)
                     <span><strong>{{__('webMessage.fax')}}:</strong>{{$settingInfo->fax}}</span>

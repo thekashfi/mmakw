@@ -161,6 +161,22 @@
                                                     <div class="invalid-feedback">{{ $errors->first('seo_keywords_ar') }}</div>
                                                     @endif
 												</div>
+
+                                                <div class="form-group">
+													<label>{{__('adminMessage.footer_about_en')}}</label>
+													<input type="text" class="form-control  @if($errors->has('footer_about_en')) is-invalid @endif" name="footer_about_en" placeholder="{{__('adminMessage.enter_footer_about_en')}}" value="@if($settingDetails->footer_about_en){{$settingDetails->footer_about_en}}@endif">
+                                                    @if($errors->has('footer_about_en'))
+                                                    <div class="invalid-feedback">{{ $errors->first('footer_about_en') }}</div>
+                                                    @endif
+												</div>
+
+                                                <div class="form-group">
+													<label>{{__('adminMessage.footer_about_ar')}}</label>
+													<input type="text" class="form-control  @if($errors->has('footer_about_ar')) is-invalid @endif" name="footer_about_ar" placeholder="{{__('adminMessage.enter_footer_about_ar')}}" value="@if($settingDetails->footer_about_ar){{$settingDetails->footer_about_ar}}@endif">
+                                                    @if($errors->has('footer_about_ar'))
+                                                    <div class="invalid-feedback">{{ $errors->first('footer_about_ar') }}</div>
+                                                    @endif
+												</div>
                                                 
                                                 <div class="form-group">
 													<label>{{__('adminMessage.owner_name')}}</label>
@@ -194,14 +210,14 @@
                                                 <div class="row">
 								                    <div class="col-md-6">
 													<label>{{__('adminMessage.email')}}</label>
-													<input type="text" class="form-control  @if($errors->has('email')) is-invalid @endif" name="email" placeholder="{{__('adminMessage.enter_email')}}" value="@if($settingDetails->email) {{$settingDetails->email}} @endif">
+													<input type="text" class="form-control  @if($errors->has('email')) is-invalid @endif" name="email" placeholder="{{__('adminMessage.enter_email')}}" value="@if($settingDetails->email){{$settingDetails->email}}@endif">
                                                     @if($errors->has('email'))
                                                     <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                                                     @endif
                                                     </div>
                                                     <div class="col-md-6">
 													<label>{{__('adminMessage.mobile')}}</label>
-													<input type="text" class="form-control  @if($errors->has('mobile')) is-invalid @endif" name="mobile" placeholder="{{__('adminMessage.enter_mobile')}}" value="@if($settingDetails->mobile) {{$settingDetails->mobile}} @endif">
+													<input type="text" class="form-control  @if($errors->has('mobile')) is-invalid @endif" name="mobile" placeholder="{{__('adminMessage.enter_mobile')}}" value="@if($settingDetails->mobile){{$settingDetails->mobile}}@endif">
                                                     @if($errors->has('mobile'))
                                                     <div class="invalid-feedback">{{ $errors->first('mobile') }}</div>
                                                     @endif
@@ -212,9 +228,18 @@
                                                 <div class="row">
 								                    <div class="col-md-12">
 													<label>{{__('adminMessage.phone')}}</label>
-													<input type="text" class="form-control  @if($errors->has('phone')) is-invalid @endif" name="phone" placeholder="{{__('adminMessage.enter_phone')}}" value="@if($settingDetails->phone) {{$settingDetails->phone}} @endif">
+													<input type="text" class="form-control  @if($errors->has('phone')) is-invalid @endif" name="phone" placeholder="{{__('adminMessage.enter_phone')}}" value="@if($settingDetails->phone){{$settingDetails->phone}}@endif">
                                                     @if($errors->has('phone'))
                                                     <div class="invalid-feedback">{{ $errors->first('phone') }}</div>
+                                                    @endif
+                                                    </div>
+												</div>
+												<div class="row">
+								                    <div class="col-md-12">
+													<label>{{__('adminMessage.fax')}}</label>
+													<input type="text" class="form-control  @if($errors->has('fax')) is-invalid @endif" name="fax" placeholder="{{__('adminMessage.enter_fax')}}" value="@if($settingDetails->fax){{$settingDetails->fax}}@endif">
+                                                    @if($errors->has('fax'))
+                                                    <div class="invalid-feedback">{{ $errors->first('fax') }}</div>
                                                     @endif
                                                     </div>
                                                   

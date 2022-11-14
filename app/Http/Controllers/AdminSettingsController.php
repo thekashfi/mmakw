@@ -65,6 +65,9 @@ class AdminSettingsController extends Controller
 			'image_big_h' => 'required',
 			'office_hours_en' => 'min:3|max:192|string',
 			'office_hours_ar' => 'min:3|max:192|string',
+			'footer_about_en' => 'max:500|string',
+			'footer_about_ar' => 'max:500|string',
+			'fax' => 'max:100|string',
         ]);
 		
 		 //check if water status is on , image required
@@ -154,12 +157,15 @@ class AdminSettingsController extends Controller
 		$setting->seo_description_ar=$request->input('seo_description_ar');
 		$setting->seo_keywords_en=$request->input('seo_keywords_en');
 		$setting->seo_keywords_ar=$request->input('seo_keywords_ar');
+		$setting->footer_about_en=$request->input('footer_about_en');
+		$setting->footer_about_ar=$request->input('footer_about_ar');
 		$setting->owner_name=$request->input('owner_name');
 		$setting->address_en=$request->input('address_en');
 		$setting->address_ar=$request->input('address_ar');
 		$setting->email=$request->input('email');
 		$setting->mobile=$request->input('mobile');
 		$setting->phone=$request->input('phone');
+		$setting->fax=$request->input('fax');
 		//$setting->is_active=!empty($request->input('is_active'))?$request->input('is_active'):'0';
 		$setting->logo=$logoName;
 		$setting->emaillogo=$emaillogoName;
