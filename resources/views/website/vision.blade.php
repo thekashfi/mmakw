@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background" style="background:url({{url('assets/images/slider/slide-3.jpg')}}) no-repeat;">
+    <section id="subheader" data-speed="8" data-type="background" style="background:url({{url('uploads/vision.jpg')}}) no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -40,7 +40,7 @@
                             @if(app()->getLocale()=="en") {!!$settingInfo->vision_details_en!!} @else  {!!$settingInfo->vision_details_ar!!} @endif
                         </div>
                         <div class="col-md-6 pic-services wow fadeInUp" data-wow-delay=".6s">
-                            <img src="{{url('assets/images/slider/slide-3.jpg')}}" class="img-responsive" alt="">
+                            <img src="{{url('uploads/vision2.jpg')}}" class="img-responsive" alt="">
                         </div>
                     </div>
                 </div>

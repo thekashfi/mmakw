@@ -5,7 +5,7 @@
 @section('content')
 
     <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background" style="background-image: url({{ url('') }}/uploads/contactus.webp)">
+    <section id="subheader" data-speed="8" data-type="background" style="background:url({{url('uploads/contactus.jpg')}}) no-repeat;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
