@@ -65,7 +65,7 @@
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.serviceslisting')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.slideslisting')}}</a>
                                         
 									</div>
 								</div>
@@ -142,7 +142,7 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
 										<h3 class="kt-portlet__head-title">
-											{{__('adminMessage.serviceslisting')}}
+											{{__('adminMessage.slideslisting')}}
 										</h3>
 									</div>
 								</div>

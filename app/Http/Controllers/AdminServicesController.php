@@ -61,7 +61,7 @@ class AdminServicesController extends Controller
 	}else{
 	$lastOrder=1;
 	}
-	return view('gwc.services.create')->with(['lastOrder'=>$lastOrder]);
+	return view('gwc.services.create')->with(['lastOrder'=>$lastOrder, 'categories' => ServiceCategory::get()]);
 	}
 	
 

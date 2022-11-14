@@ -73,6 +73,12 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/service-categories', 'AdminServiceCategoriesController', ['except' => 'destroy']);
 });
 
+//news-categories
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/news-categories/delete/{id}','AdminNewsCategoriesController@destroy');
+    Route::resource('gwc/news-categories', 'AdminNewsCategoriesController', ['except' => 'destroy']);
+});
+
 //contact us
 Route::group(['middleware' => ['admin']], function(){
 	Route::get('/gwc/contactus/subjects', 'AdminInboxController@showSubjects');

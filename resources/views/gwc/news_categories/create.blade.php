@@ -3,7 +3,7 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.createnewservicecategory')}}</title>
+		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.createnewnewscategory')}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--css files -->
 		@include('gwc.css.user')
@@ -57,12 +57,12 @@
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">{{__('adminMessage.servicecategories')}}</h3>
+									<h3 class="kt-subheader__title">{{__('adminMessage.newscategory')}}</h3>
 									<span class="kt-subheader__separator kt-hidden"></span>
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewservicecategories')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewnewscategory')}}</a>
 									</div>
 								</div>
 
@@ -97,14 +97,14 @@
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
-										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewservicecategories')}}</h3>
+										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewnewscategory')}}</h3>
 									</div>
 									<div class="kt-portlet__head-toolbar">
 										<div class="kt-portlet__head-wrapper">
 											<div class="kt-portlet__head-actions">
 
 												@if(auth()->guard('admin')->user()->can('services-list'))
-												<a href="{{url('gwc/service-categories')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.listservicecategories')}}</a> @endif
+												<a href="{{url('gwc/news-categories')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.listnewscategory')}}</a> @endif
 											</div>
 										</div>
 									</div>
@@ -113,7 +113,7 @@
 					@if(auth()->guard('admin')->user()->can('services-create'))
 
                          <form name="tFrm"  id="form_validation"  method="post"
-                          class="kt-form" enctype="multipart/form-data" action="{{url('gwc/service-categories')}}">
+                          class="kt-form" enctype="multipart/form-data" action="{{url('gwc/news-categories')}}">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<div class="kt-portlet__body">
 										<!--parent categories dropdown -->
@@ -156,7 +156,7 @@
 											<div class="kt-portlet__foot">
 												<div class="kt-form__actions">
 													<button type="submit" class="btn btn-success">{{__('adminMessage.save')}}</button>
-													<button type="button" onClick="Javascript:window.location.href='{{url('gwc/service-categories')}}'"  class="btn btn-secondary cancelbtn">{{__('adminMessage.cancel')}}</button>
+													<button type="button" onClick="Javascript:window.location.href='{{url('gwc/news-categories')}}'"  class="btn btn-secondary cancelbtn">{{__('adminMessage.cancel')}}</button>
 												</div>
 											</div>
 										</form>

@@ -248,7 +248,7 @@
 
 											<div class="form-group">
 												<div class="col-lg-6">
-													<label for="category_id">Category:</label>
+													<label for="category_id">{{__('adminMessage.category')}}:</label>
 													<select class="form-control" name="category_id" id="category_id">
 														<option selected value="null">&lt;null&gt;</option>
 														@foreach($categories as $category)

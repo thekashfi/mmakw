@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\NewsCategory;
 use Illuminate\Http\Request;
 use App\NewsEvents;
 use App\Settings;
@@ -60,7 +61,7 @@ class AdminNewsEventsController extends Controller
 	}else{
 	$lastOrder=1;
 	}
-	return view('gwc.newsevents.create')->with(['lastOrder'=>$lastOrder]);
+	return view('gwc.newsevents.create')->with(['lastOrder'=>$lastOrder, 'categories' => NewsCategory::get()]);
 	}
 	
 
@@ -128,6 +129,7 @@ class AdminNewsEventsController extends Controller
 		$slug = new NewsEventsSlug;
 		
 		$newsevents->slug=$slug->createSlug($request->title_en);
+        $newsevents->category_id=$request->input('category_id') != 'null' ? $request->input('category_id') : null;
 		$newsevents->title_en=$request->input('title_en');
 		$newsevents->title_ar=$request->input('title_ar');
 		$newsevents->details_en=$request->input('details_en');
@@ -140,7 +142,7 @@ class AdminNewsEventsController extends Controller
 		$newsevents->display_order=!empty($request->input('display_order'))?$request->input('display_order'):'0';
 		$newsevents->ntype=!empty($request->input('ntype'))?$request->input('ntype'):'news';
 		$newsevents->news_Date=!empty($request->input('news_Date'))?$request->input('news_Date'):date("Y-m-d");
-		
+
 		$newsevents->image=$imageName;
 		$newsevents->save();
 
@@ -164,7 +166,8 @@ class AdminNewsEventsController extends Controller
     public function edit($id)
     {
 	    $editnewsevents = NewsEvents::find($id);
-        return view('gwc.newsevents.edit',compact('editnewsevents'));
+        $categories = NewsCategory::get();
+        return view('gwc.newsevents.edit',compact('editnewsevents', 'categories'));
     }
 	
 	
@@ -265,6 +268,7 @@ class AdminNewsEventsController extends Controller
 		$slug = new NewsEventsSlug;
 		
 		$newsevents->slug=$slug->createSlug($request->title_en,$id);
+        $newsevents->category_id=$request->input('category_id') != 'null' ? $request->input('category_id') : null;
 		$newsevents->title_en=$request->input('title_en');
 		$newsevents->title_ar=$request->input('title_ar');
 		$newsevents->details_en=$request->input('details_en');

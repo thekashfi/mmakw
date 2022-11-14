@@ -57,12 +57,12 @@
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">{{__('adminMessage.services')}}</h3>
+									<h3 class="kt-subheader__title">{{__('adminMessage.boxes')}}</h3>
 									<span class="kt-subheader__separator kt-hidden"></span>
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewservice')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewbox')}}</a>
 									</div>
 								</div>
 
@@ -97,14 +97,14 @@
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
-										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewservice')}}</h3>
+										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewbox')}}</h3>
 									</div>
 									<div class="kt-portlet__head-toolbar">
 										<div class="kt-portlet__head-wrapper">
 											<div class="kt-portlet__head-actions">
 
 												@if(auth()->guard('admin')->user()->can('services-list'))
-												<a href="{{url('gwc/boxes')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.listservices')}}</a> @endif
+												<a href="{{url('gwc/boxes')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.listboxes')}}</a> @endif
 											</div>
 										</div>
 									</div>
