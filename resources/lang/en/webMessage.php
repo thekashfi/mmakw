@@ -235,8 +235,8 @@ return [
     'send_us_message'       =>'Send Us Message',
     'web'                   =>'Web',
 	'our_clients'           =>'Our Clients',
-	'websitetext'           =>'',
-	'websitetext'           =>'',
+	'next'                  =>'Next',
+	'prev'                  =>'Prev',
 	'websitetext'           =>'',
 	'websitetext'           =>'',
 

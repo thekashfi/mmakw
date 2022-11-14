@@ -1,173 +1,66 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="irstheme">
+@extends('website.layout')
 
-    <title>@if(app()->getLocale()=="en") {{$settingInfo->name_en}} @else {{$settingInfo->name_ar}} @endif | {{__('webMessage.newsevents')}}</title>
-    
-    <meta name="description" content="@if(app()->getLocale()=="en") {{$settingInfo->seo_description_en}} @else {{$settingInfo->seo_description_ar}} @endif" />
-    <meta name="abstract" content="@if(app()->getLocale()=="en") {{$settingInfo->seo_description_en}} @else {{$settingInfo->seo_description_ar}} @endif">
-    <meta name="keywords" content="@if(app()->getLocale()=="en") {{$settingInfo->seo_keywords_en}} @else {{$settingInfo->seo_keywords_ar}} @endif" />
-    <meta name="Copyright" content="{{$settingInfo->name_en}}, Kuwait Copyright 2020 - {{date('Y')}}" />
-    <meta name="author" content="Gulfweb Web Design, Kuwait" />
-    <META NAME="Designer" CONTENT="Gulfweb Web Design Kuwait">
-    <meta name="Country" content="Kuwait" />
-    <META NAME="city" CONTENT="Kuwait City">
-    <META NAME="Language" CONTENT="English">
-    <META NAME="Geography" CONTENT="@if(app()->getLocale()=="en") {{$settingInfo->address_en}} @else {{$settingInfo->address_ar}} @endif">
-    <META NAME="Revisit-After" CONTENT="2 days">
-    <meta name="robots" CONTENT="all">
-    <META NAME="distribution" CONTENT="Global">
-    @if($settingInfo->favicon)
-    <link rel="icon" href="{{url('uploads/logo/'.$settingInfo->favicon)}}">
-    @endif
-    <link href="{{url('assets/css/themify-icons.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/flaticon.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/bootstrap-notify.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/owl.carousel.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/owl.theme.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/slick.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/slick-theme.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/swiper.min.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/owl.transitions.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/jquery.fancybox.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
-	@if(app()->getLocale()=="ar")
-    <link href="{{url('assets/css/arstyle.css')}}" rel="stylesheet">
-    @endif
-	<link rel="stylesheet" href="{{url('assets/animation/animations.css')}}" type="text/css" media="all">
-	
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-	
+@section('title', app()->getLocale()=="en" ? $settingInfo->mission_title_en : $settingInfo->mission_title_ar)
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+@section('content')
 
-</head>
+    <!-- subheader -->
+    <section id="subheader" data-speed="8" data-type="background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{__('webMessage.newsevents')}}</h1>
+                    <ul class="crumb">
+                        <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
+                        <li class="sep">/</li>
+                        <li>{{__('webMessage.newsevents')}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- subheader close -->
 
-<body id="home" data-appear-top-offset='-300'>
-
-    <!-- start page-wrapper -->
-    <div class="page-wrapper">
-
-    <!-- start preloader -->
-    <div class="preloader">
-        <div class="sk-chase">
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-        </div>        
-    </div>
-    <!-- end preloader -->
-
-        <!-- Start header -->
-        @include('website.includes.top_home_header')
-        <!-- end of header -->
-
-
-        <!-- start of hero -->
-        <section class="inner_page" style="background:url({{url('assets/images/slider/slide-3.jpg')}}) no-repeat;">
-            <h2 class="text-center">{{__('webMessage.newsevents')}}</h2>
-        </section>
-        <!-- end of hero slider -->
- 
-        
-        <!-- start about-section -->
-        <section class="about-section" id="about">
-            <div class="container">
-             @if($NewsLists)
-                <div class="row animatedParent">
-                @foreach($NewsLists as $NewsList)
-                    <div class="col col-md-4 col-sm-12">
-                        <div class="blog-grids clearfix">
-                        
-                            <div class="grid">
-                                <div class="entry-media slower animated fadeInDown">
-                                    @if($NewsList->image)
-                                    <img src="{{url('uploads/newsevents/'.$NewsList->image)}}" alt>
-                                    @endif
-                                </div>
-                                <div class="entry-details slower animated fadeInUp">
-                                    <!--<div class="cat">Business, Law</div>-->
-                                    @if($NewsList->title_en && app()->getLocale()=="en")
-                                    <h5><a href="{{url('newsdetails/'.$NewsList->slug)}}">{{$NewsList->title_en}}</a></h5>
-                                    @else
-                                    <h5><a href="{{url('newsdetails/'.$NewsList->slug)}}">{{$NewsList->title_ar}}</a></h5>
-                                    @endif
+    <!-- content begin -->
+    <div id="content">
+        <div class="container">
+            @if($NewsLists)
+                <div class="row">
+                    @foreach($NewsLists as $news)
+                        <div class="col-lg-4 col-md-6 mb30">
+                            <div class="bloglist item">
+                                <div class="post-content">
+                                    <div class="post-image">
+                                        <a class="{{-- image-popup-no-margins --}}" href="{{url('newsdetails/'.$news->slug)}}">
+                                            @if($news->image)
+                                                <img alt="" src="{{url('uploads/newsevents/'.$news->image)}}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                    <div class="post-text">
+                                        @if($news->category)
+                                            <span class="p-tagline">{{ app()->getLocale()=="en" ? optional($news->category)->name_en : optional($news->category)->name_ar }}</span>
+                                        @endif
+                                        <h4>
+                                            <a href="{{url('newsdetails/'.$news->slug)}}">
+                                            {{ app()->getLocale()=="en" ? $news->title_en : $news->title_ar }}
+                                            </a>
+                                        </h4>
+                                        <p>{{ \Illuminate\Support\Str::words($news["details__" . app()->getLocale()], 10, '...') }}</p>
+                                        <span class="p-date">{{ $news->created_at->format('F d, Y') }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        
                         </div>
-                    </div>
-                    @endforeach    
+                    @endforeach
+
+                    <div class="spacer-single"></div>
+
+                    {{ $NewsLists->links('website.includes.news-pagination') }}
                 </div>
-                <div class="text-center">{{ $NewsLists->links() }}</div>
-                @endif
-            </div> 
-            
-            <!-- end container -->
-        </section>
-        <!-- end about-section -->
-        
-       <div style="clear:both; height:150px;"></div>
+            @endif
 
-        <!-- start site-footer -->
-        @include('website.includes.home_footer')  
-        <!-- end site-footer -->
-
-
-<div class='notifications top-right'></div>
+        </div>
     </div>
-    <!-- end of page-wrapper -->
 
-    <!-- All JavaScript files
-    ================================================== -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-	<script src="{{url('assets/js/jquery.min.js')}}"></script>
-	<script src="{{url('assets/animation/css3-animate-it.js')}}"></script>
-    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-
-    <script src="{{url('assets/js/jquery-plugin-collection.js')}}"></script>
-    <script src="{{url('assets/js/script.js')}}"></script>
-    <script src="{{url('assets/js/bootstrap-notify.js')}}"></script>
-    <script>
-	$(document).ready(function(){
-	    $.ajaxSetup({
-		  headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		  }
-		});
-	    $("#subscribeBtn").click(function(e){ 
-		 var newsletter_email = $("#newsletter_email").val(); 
-	     $.ajax({
-             url: 'subscribe_newsletter',
-             data: {'newsletter_email': newsletter_email},
-             type: 'POST',
-             datatype: 'JSON',
-             success: function(msg) { 
-			    if(msg.status=="200"){
-                $('.top-right').notify({message:{text: msg.message},type:'success'}).show();
-				}else{
-				$('.top-right').notify({message:{text: msg.message},type:'danger'}).show();
-				}
-             },
-             error: function(msg) {
-                $('.top-right').notify({message:{text: 'Error Found'},type:'danger'}).show();
-             }
-           });
-		});
-	});
-	</script>
-	
-</body>
-</html>
+@endsection

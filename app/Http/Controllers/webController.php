@@ -314,7 +314,7 @@ class webController extends Controller
 	  //get members  
 	  $memberslists      = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  //get members  
-	  $NewsLists         = NewsEvents::where("is_active","1")->orderBy('news_date', 'desc')->paginate($settingInfo->item_per_page_back);
+	  $NewsLists         = NewsEvents::where("is_active","1")->orderBy('news_date', 'desc')->with('category')->paginate($settingInfo->item_per_page_back);
 	  
 	 return view('website.news',compact('settingInfo','practiceareaMenus','servicesMenus','NewsLists','memberslists'));
 	 
