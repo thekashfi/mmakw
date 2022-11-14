@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Box;
 use App\ServiceCategory;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -42,8 +43,9 @@ class webController extends Controller
 	  $slides           = Slide::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	  $service_categories= ServiceCategory::orderBy('display_order', $settingInfo->default_sort)->with('services')->has('services')->get();
 	  $clients           = Clients::where("is_active","1")->whereNotNull('image')->where('image', '!=', '')->take(10)->get();
+	  $boxes           = Box::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 
-      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories','clients'));
+      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories','clients','boxes'));
     }
 	
 	//subscribe newsletter email

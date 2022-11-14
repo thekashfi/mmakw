@@ -1,4 +1,4 @@
-@if(!empty($servicesMenus))
+@if(!empty($boxes))
 <section id="section-services" class="no-top mt150">
     <div class="container">
         <div class="row">
@@ -6,15 +6,19 @@
 {{--            <span>{{__('webMessage.ourbestservices')}}</span>--}}
 {{--            <h2>{{__('webMessage.ourservices')}}</h2>--}}
 
-            @foreach($servicesMenus as $servicesMenu)
+            @foreach($boxes as $box)
             <div class="col-lg-3 mt-70 sm-mt0 text-middle text-light wow fadeInRight" data-wow-delay="0">
-                <div class="shadow-soft" data-bgimage="url({{ $servicesMenu->image ? url('uploads/services/thumb/'.$servicesMenu->image) : url('uploads/no-image.png')}})">
+                <div class="shadow-soft" data-bgimage="url({{ $box->image ? url('uploads/boxes/'.$box->image) : url('uploads/no-image.png')}})">
                     <div class="padding40 overlay60">
-                        <h3>@if(app()->getLocale()=="en") {{$servicesMenu->title_en}} @else {{$servicesMenu->title_ar}} @endif</h3>
+                        <h3>@if(app()->getLocale()=="en") {{$box->title_en}} @else {{$box->title_ar}} @endif</h3>
                         <p>
-                            {{ Illuminate\Support\Str::limit(strip_tags((app()->getLocale()=="en" ? $servicesMenu->details_en : $servicesMenu->details_ar)), 180, '...') }}
+                            {!! app()->getLocale() == "en" ? $box->description_en : $box->description_ar !!}
                         </p>
-                        <a href="{{url('/services/'.$servicesMenu->slug)}}" class="btn-line btn-fullwidth">Read More</a>
+                        @if(!empty($box->link))
+                            <a href="{{$box->link}}" class="btn-line btn-fullwidth">
+                                {{ (app()->getLocale()=="en" ? $box->link_title_en : $box->link_title_ar) }}
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
