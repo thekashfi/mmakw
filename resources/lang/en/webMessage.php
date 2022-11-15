@@ -237,9 +237,11 @@ return [
 	'our_clients'           =>'Our Clients',
 	'next'                  =>'Next',
 	'prev'                  =>'Prev',
-    'recent_posts' => 'Recent Posts',
-    'tags' => 'Tags',
+    'recent_posts'          => 'Recent Posts',
+    'tags'                  => 'Tags',
 	'whychooseus'           =>'Why Choose Us?',
-	'websitetext'           =>'',
+	'leaveacomment'         =>'Leave a Comment',
+	'comment_sent'          =>'Your comment has been sent successfully. And will be shown in site after confirmed.',
+	'comments'              =>'Comments',
 
 ];

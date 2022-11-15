@@ -73,6 +73,13 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/attributes', 'AdminAttributesController', ['except' => 'destroy']);
 });
 
+//attributes
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/comments/{id}/approve','AdminCommentsController@approve');
+    Route::get('/gwc/comments/{id}/reject','AdminCommentsController@reject');
+    Route::resource('gwc/comments', 'AdminCommentsController', ['only' => 'index']);
+});
+
 //service-categories
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/service-categories/delete/{id}','AdminServiceCategoriesController@destroy');
@@ -254,6 +261,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/contactus','webController@contactus');
 	Route::post('/contactform','webController@contactform')->name('contactform');
 	Route::get('/newsdetails/{slug}','webController@newsdetails');
+	Route::post('/submitComment','webController@submitComment');
 	Route::get('/mission','webController@mission');
 	Route::get('/vision','webController@vision');
 	Route::get('/practice/{slug}','webController@practicearea');

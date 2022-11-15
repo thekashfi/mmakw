@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Attribute;
 use App\Box;
+use App\Comment;
 use App\NewsCategory;
 use App\ServiceCategory;
 use App\Slide;
@@ -200,13 +201,15 @@ class webController extends Controller
 	   $newsdetails    = NewsEvents::where('slug',$slug)->first();
 	   //get practice area 
 	   $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
-	   //get services  
+	   //get services
 	   $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	   //get members  
 	   $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
        $news_categories  = NewsCategory::withCount('news')->orderBy('news_count', 'desc')->has('news')->with('news')->get();
+       $comments_count = Comment::where('news_id', $newsdetails->id)->where('is_approved', 1)->orderBy('created_at', $settingInfo->default_sort)->count();
+       $comments = Comment::where('news_id', $newsdetails->id)->whereNull('parent_id')->where('is_approved', 1)->orderBy('created_at', $settingInfo->default_sort)->get();
 
-	 return view('website.newsdetails',compact('settingInfo','newsdetails','practiceareaMenus','servicesMenus','memberslists','news_categories'));
+	 return view('website.newsdetails',compact('settingInfo','newsdetails','practiceareaMenus','servicesMenus','memberslists','news_categories','comments','comments_count'));
 	}
 	
 	//get news details
@@ -326,6 +329,35 @@ class webController extends Controller
 	 return view('website.news',compact('settingInfo','practiceareaMenus','servicesMenus','NewsLists','memberslists'));
 	 
 	}
+
+	public function submitComment(Request $request){
+        // store comment
+
+        $settingInfo      = Settings::where("keyname","setting")->first();
+
+        $validator = Validator::make($request->all(),[
+            'name'    => 'required',
+            'email'   => 'required|email',
+            'text' => 'required|string|min:3|max:900',
+        ],
+            [
+                'name.required'    => trans('webMessage.name_required'),
+                'email.required'   => trans('webMessage.email_required'),
+                'text.required' => trans('webMessage.message_required')
+            ]
+        );
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous() . "#comment-form-wrapper")
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $comment = Comment::create($request->all());
+        $comment->update(['text' => strip_tags($request->text)]);
+
+        return redirect()->to(url()->previous() . "#comment-form-wrapper")->with('message-success',trans('webMessage.comment_sent'));
+	}
+
    ///	
   public static function getSettings(){
   $settingInfo    = Settings::where("keyname","setting")->first();

@@ -55,101 +55,56 @@
                         @if($newsdetails->category)
                             <span><i class="fa fa-tag id-color"></i><a href="{{url('/news')}}?cat={{ $newsdetails->category->slug }}">{{ $newsdetails->category["name_" . app()->getLocale()] }}</a></span>
                         @endif
-                        <span><i class="fa fa-comment id-color"></i><a href="#">10 Comments</a></span>
+                        <span><i class="fa fa-comment id-color"></i><a href="#">{{ $comments_count }} {{ __('webMessage.comments') }}</a></span>
                     </div>
 
                     <div class="spacer-single"></div>
 
                     <div id="blog-comment">
-                        <h3>Comments (5)</h3>
+                        <h3>{{ __('webMessage.comments') }} ({{ $comments_count }})</h3>
 
                         <div class="spacer-half"></div>
 
                         <ol>
                             <li>
-                                <div class="avatar">
-                                    <img src="images/avatar.jpg" alt="" /></div>
-                                <div class="comment-info">
-                                    <span class="c_name">John Smith</span>
-                                    <span class="c_date id-color">8 August 2018</span>
-                                    <span class="c_reply"><a href="#">Reply</a></span>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit voluptatem   accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt   explicabo.</div>
-                                <ol>
-                                    <li>
-                                        <div class="avatar">
-                                            <img src="images/avatar.jpg" alt="" /></div>
-                                        <div class="comment-info">
-                                            <span class="c_name">John Smith</span>
-                                            <span class="c_date id-color">8 August 2018</span>
-                                            <span class="c_reply"><a href="#">Reply</a></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit voluptatem   accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt   explicabo.</div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <li>
-                                <div class="avatar">
-                                    <img src="images/avatar.jpg" alt="" /></div>
-                                <div class="comment-info">
-                                    <span class="c_name">John Smith</span>
-                                    <span class="c_date id-color">8 August 2018</span>
-                                    <span class="c_reply"><a href="#">Reply</a></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit voluptatem   accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt   explicabo.</div>
-                                <ol>
-                                    <li>
-                                        <div class="avatar">
-                                            <img src="images/avatar.jpg" alt="" /></div>
-                                        <div class="comment-info">
-                                            <span class="c_name">John Smith</span>
-                                            <span class="c_date id-color">8 August 2018</span>
-                                            <span class="c_reply"><a href="#">Reply</a></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit voluptatem   accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt   explicabo.</div>
-                                    </li>
-                                </ol>
-                            </li>
-
-                            <li>
-                                <div class="avatar">
-                                    <img src="images/avatar.jpg" alt="" /></div>
-                                <div class="comment-info">
-                                    <span class="c_name">John Smith</span>
-                                    <span class="c_date id-color">8 August 2018</span>
-                                    <span class="c_reply"><a href="#">Reply</a></span>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="comment">Sed ut perspiciatis unde omnis iste natus error sit voluptatem   accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt   explicabo.</div>
+                                @include('website.includes.comments' , ['comments' => $comments])
                             </li>
                         </ol>
 
                         <div class="spacer-single"></div>
 
                         <div id="comment-form-wrapper">
-                            <h3>Leave a Comment</h3>
+                            <h3>{{ __('webMessage.leaveacomment') }}</h3>
                             <div class="comment_form_holder">
-                                <form id="contact_form" name="form1" method="post" action="#">
+                                <form id="contact_form" name="form1" method="post" action="{{ url('submitComment') }}">
+                                    @csrf
 
-                                    <label>Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" />
+                                    <input type="hidden" name="news_id" value="{{ $newsdetails->id }}"/>
 
-                                    <label>Email <span class="req">*</span></label>
-                                    <input type="text" name="email" id="email" class="form-control" />
-                                    <div id="error_email" class="error">Please check your email</div>
+                                    <label>{{ __('webMessage.name') }} <span class="req">*</span></label>
+                                    <input type="text" name="name" id="name" class="form-control"/>
+                                    @if($errors->has('name'))
+                                        <div id='name_error' class='error d-block'>{{ $errors->first('name') }}</div>
+                                    @endif
 
-                                    <label>Message <span class="req">*</span></label>
-                                    <textarea cols="10" rows="10" name="message" id="message" class="form-control"></textarea>
-                                    <div id="error_message" class="error">Please check your message</div>
-                                    <div id="mail_success" class="success">Thank you. Your message has been sent.</div>
-                                    <div id="mail_failed" class="error">Error, email not sent</div>
+                                    <label>{{ __('webMessage.email') }} <span class="req">*</span></label>
+                                    <input type="email" name="email" id="email" class="form-control"/>
+                                    @if($errors->has('email'))
+                                        <div id='email_error' class='error d-block'>{{ $errors->first('email') }}</div>
+                                    @endif
+
+
+                                    <label>{{ __('webMessage.message') }} <span class="req">*</span></label>
+                                    <textarea cols="10" rows="10" name="text" id="text" class="form-control"></textarea>
+                                    @if($errors->has('text'))
+                                        <div id='text_error' class='error d-block'>{{ $errors->first('text') }}</div>
+                                    @endif
+
+                                    @if ($message = Session::get('message-success'))
+                                        <div id="success_message" class='success d-block'>
+                                            {{ $message }}
+                                        </div>
+                                    @endif
 
                                     <p id="btnsubmit">
                                         <input type="submit" id="send" value="Send" class="btn btn-line" /></p>

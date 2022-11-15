@@ -411,5 +411,9 @@ return [
     'attributeslisting' => 'Attributes Listing',
     'createattribute' => 'Create Attribute',
     'listattributes' => 'List Attributes',
+    'commentslisting' => 'List Comments',
     'editattribute' => 'Edit Attribute',
+    'comments' => 'Comments',
+    'approve' => 'Approve',
+    'reject' => 'Reject',
 ];
