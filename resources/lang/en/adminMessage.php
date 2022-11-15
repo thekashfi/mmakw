@@ -410,6 +410,6 @@ return [
     'attributes' => 'Attributes',
     'attributeslisting' => 'Attributes Listing',
     'createattribute' => 'Create Attribute',
-    'listattributes' => 'List Attribute',
+    'listattributes' => 'List Attributes',
     'editattribute' => 'Edit Attribute',
 ];

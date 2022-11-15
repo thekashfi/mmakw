@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="column">Our Address <span class="id-color"><strong>Mahboula - Coastal Road, Block 4 - Compound 54 - Villa 4</strong></span></div>
-                    <div class="column">Call Us <span class="id-color"><strong>+965 2227 2212 - 2227 2213</strong></span></div>
+                    <div class="column">Our Address <span class="id-color"><strong>{{$settingInfo['address_' . app()->getLocale()]}}</strong></span></div>
+                    <div class="column">Call Us <span class="id-color"><strong>{{$settingInfo->phone}}</strong></span></div>
                     <!-- social icons -->
                     <div class="column social">
                         <a href="#"><i class="fa fa-facebook"></i></a>

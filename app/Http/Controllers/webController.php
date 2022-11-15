@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Attribute;
 use App\Box;
 use App\NewsCategory;
 use App\ServiceCategory;
@@ -45,8 +46,9 @@ class webController extends Controller
 	  $service_categories= ServiceCategory::orderBy('display_order', $settingInfo->default_sort)->with('services')->has('services')->get();
 	  $clients           = Clients::where("is_active","1")->whereNotNull('image')->where('image', '!=', '')->take(10)->get();
 	  $boxes           = Box::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	  $attributes           = Attribute::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 
-      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories','clients','boxes'));
+      return view('website.index',compact('settingInfo','subjectLists','newseventslists','practiceareaMenus','servicesMenus','memberslists','slides','service_categories','clients','boxes','attributes'));
     }
 	
 	//subscribe newsletter email

@@ -239,7 +239,7 @@ return [
 	'prev'                  =>'Prev',
     'recent_posts' => 'Recent Posts',
     'tags' => 'Tags',
-	'websitetext'           =>'',
+	'whychooseus'           =>'Why Choose Us?',
 	'websitetext'           =>'',
 
 ];

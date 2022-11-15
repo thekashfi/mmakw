@@ -104,10 +104,6 @@ class AdminAttributesController extends Controller
             return redirect('/gwc/attributes')->with('message-error','No record found');
         }
 
-        if(Services::where('category_id', $category->id)->exists()){
-            return redirect('/gwc/attributes')->with('message-error','Category is used by services');
-        }
-
         //save logs
         $key_name   = "attributes";
         $key_id     = $category->id;
@@ -118,6 +114,6 @@ class AdminAttributesController extends Controller
 
         //end deleting parent cat image
         $category->delete();
-        return redirect()->back()->with('message-success','service category is deleted successfully');
+        return redirect()->back()->with('message-success','attribute is deleted successfully');
     }
 }

@@ -87,81 +87,29 @@
             <!-- section begin -->
             <section id="section-features" class="text-light jarallax">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-                            <h1>Why Choose Us?</h1>
-                            <div class="separator"><span><i class="fa fa-circle"></i></span></div>
-                            <div class="spacer-single"></div>
-                        </div>
-                    </div>
-
-                    <div class="row g-4">
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay="0s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay=".5s">1</span>
-                                <div class="text">
-                                    <h3><span class="id-color">Interior Expertise</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
+                    @if(count($attributes))
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
+                                <h1>{{__('webMessage.whychooseus')}}</h1>
+                                <div class="separator"><span><i class="fa fa-circle"></i></span></div>
+                                <div class="spacer-single"></div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay=".25s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay=".75s">2</span>
-                                <div class="text">
-                                    <h3><span class="id-color">Awards Winning</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
+                        <div class="row g-4">
+                            @foreach($attributes as $index => $attribute)
+                                <div class="col-lg-4 wow fadeIn" data-wow-delay="0s">
+                                    <div class="box-number square">
+                                        <span class="number bg-color wow rotateIn" data-wow-delay=".5s">{{ ++$index }}</span>
+                                        <div class="text">
+                                            <h3><span class="id-color">{{$attribute['title_' . app()->getLocale()]}}</span></h3>
+                                            <p>{!! $attribute['description_' . app()->getLocale()] !!}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay="1s">3</span>
-                                <div class="text">
-                                    <h3><span class="id-color">Affordable Price</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay=".75s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay="1.25s">4</span>
-                                <div class="text">
-                                    <h3><span class="id-color">Free Consultation</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay="1s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay="1.5s">5</span>
-                                <div class="text">
-                                    <h3><span class="id-color">Guaranteed Works</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 wow fadeIn" data-wow-delay="1.25s">
-                            <div class="box-number square">
-                                <span class="number bg-color wow rotateIn" data-wow-delay="1.75s">6</span>
-                                <div class="text">
-                                    <h3><span class="id-color">24 / 7 Support</span></h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </section>
             <!-- section close -->
