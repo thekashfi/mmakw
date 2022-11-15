@@ -36,8 +36,7 @@ class AdminUserController extends Controller
         //menus records
         if(!empty($q)){
 		if(auth()->guard('admin')->user()->can('logs-list-self-only')){
-		$usersLists = Admin::where('created_by',auth()->guard('admin')->user()->id)
-		                     ->where('name','LIKE','%'.$q.'%')
+		$usersLists = Admin::where('name','LIKE','%'.$q.'%')
                             ->orderBy('name', 'ASC')
                             ->paginate($settingInfo->item_per_page_back); 
 		}else{
@@ -49,7 +48,7 @@ class AdminUserController extends Controller
 		
         }else{
 		if(auth()->guard('admin')->user()->can('logs-list-self-only')){
-		$usersLists = Admin::where('created_by',auth()->guard('admin')->user()->id)->orderBy('name', 'ASC')->paginate($settingInfo->item_per_page_back);
+		$usersLists = Admin::orderBy('name', 'ASC')->paginate($settingInfo->item_per_page_back);
 		}else{
         $usersLists = Admin::orderBy('name', 'ASC')->paginate($settingInfo->item_per_page_back);
 		}
