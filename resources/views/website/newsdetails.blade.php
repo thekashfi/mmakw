@@ -12,11 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>???</h1>
+                <h1>{{ $newsdetails->category['name_' . app()->getLocale()] }}</h1>
                 <ul class="crumb">
                     <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
                     <li class="sep">/</li>
-                    <li>Careers</li>
+                    <li>{{ $newsdetails->category['name_' . app()->getLocale()] }}</li>
                 </ul>
             </div>
         </div>

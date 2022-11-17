@@ -63,24 +63,24 @@
 @endif
 
 
-<section id="section-hero" class="no-top no-bottom full-height vertical-center text-white jarallax" aria-label="section" data-video-src="mp4:{{ url('uploads/slides') }}/football.mp4">
-        <div class="de-front">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="sm-spacer-double"></div>
-                    <div class="col-lg-4 col-md-12 wow fadeInRight" data-wow-delay=".2s">
-                        <div class="de_count ultra-big s2 text-center">
-                            <h3 class="timer" data-to="25" data-speed="2000">0</h3>
-                            <span class="text-white">Years of Experience</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 mb-sm-30 wow fadeInRight" data-wow-delay=".4s">
-                        <h2 class="style-2 id-color">We Are MMA Law</h2>
-                        <h2 class="style-4">We Are The Most Populer Law Firm With Various Law Services!</h2>
-                    </div>
-                    <div class="sm-spacer-double"></div>
-                </div>
-            </div>
-        </div>
-        <div class="overlay-bg"></div>
-</section>
+{{--<section id="section-hero" class="no-top no-bottom full-height vertical-center text-white jarallax" aria-label="section" data-video-src="mp4:{{ url('uploads/slides') }}/football.mp4">--}}
+{{--        <div class="de-front">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row g-5 align-items-center">--}}
+{{--                    <div class="sm-spacer-double"></div>--}}
+{{--                    <div class="col-lg-4 col-md-12 wow fadeInRight" data-wow-delay=".2s">--}}
+{{--                        <div class="de_count ultra-big s2 text-center">--}}
+{{--                            <h3 class="timer" data-to="25" data-speed="2000">0</h3>--}}
+{{--                            <span class="text-white">Years of Experience</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-6 mb-sm-30 wow fadeInRight" data-wow-delay=".4s">--}}
+{{--                        <h2 class="style-2 id-color">We Are MMA Law</h2>--}}
+{{--                        <h2 class="style-4">We Are The Most Populer Law Firm With Various Law Services!</h2>--}}
+{{--                    </div>--}}
+{{--                    <div class="sm-spacer-double"></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="overlay-bg"></div>--}}
+{{--</section>--}}

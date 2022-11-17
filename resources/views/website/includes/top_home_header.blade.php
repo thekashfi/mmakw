@@ -74,7 +74,17 @@
 
                                 <li><a href="{{url('/members')}}">{{__('webMessage.membershiplistings')}}</a></li>
                                 <li><a href="{{url('/news')}}">{{__('webMessage.newsevents')}}</a></li>
-                                <li><a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a></li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a href="{{url('/news')}}">{{__('webMessage.careers')}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
 
 {{--                                @if(empty(Auth::guard('webs')->user()->id))--}}
 {{--                                    @if(app()->getLocale()=='en')--}}

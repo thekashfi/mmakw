@@ -232,19 +232,19 @@
 
                                         <!-- friendly url , status , sorting -->
                                         <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>{{__('adminMessage.video')}}</label>
-                                                <div class="custom-file @if($errors->has('video')) is-invalid @endif">
-                                                    <input type="file"
-                                                           class="custom-file-input @if($errors->has('video')) is-invalid @endif"
-                                                           id="video" name="video">
-                                                    <label class="custom-file-label"
-                                                           for="video">{{__('adminMessage.chooseVideo')}}</label>
-                                                </div>
-                                                @if($errors->has('video'))
-                                                    <div class="invalid-feedback">{{ $errors->first('video') }}</div>
-                                                @endif
-                                            </div>
+{{--                                            <div class="col-lg-6">--}}
+{{--                                                <label>{{__('adminMessage.video')}}</label>--}}
+{{--                                                <div class="custom-file @if($errors->has('video')) is-invalid @endif">--}}
+{{--                                                    <input type="file"--}}
+{{--                                                           class="custom-file-input @if($errors->has('video')) is-invalid @endif"--}}
+{{--                                                           id="video" name="video">--}}
+{{--                                                    <label class="custom-file-label"--}}
+{{--                                                           for="video">{{__('adminMessage.chooseVideo')}}</label>--}}
+{{--                                                </div>--}}
+{{--                                                @if($errors->has('video'))--}}
+{{--                                                    <div class="invalid-feedback">{{ $errors->first('video') }}</div>--}}
+{{--                                                @endif--}}
+{{--                                            </div>--}}
                                             <div class="col-lg-2">
                                                 @if($slide->video)
                                                     <a href="javascript:;" data-toggle="kt-popover" data-trigger="focus"

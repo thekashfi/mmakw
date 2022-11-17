@@ -46,7 +46,7 @@
                                             {{ app()->getLocale()=="en" ? $news->title_en : $news->title_ar }}
                                             </a>
                                         </h4>
-                                        <p>{{ \Illuminate\Support\Str::words($news["details__" . app()->getLocale()], 10, '...') }}</p>
+                                        <p>{{ \Illuminate\Support\Str::words(strip_tags($news["details_" . app()->getLocale()]), 22, '...') }}</p>
                                         <span class="p-date">{{ $news->created_at->format('F d, Y') }}</span>
                                     </div>
                                 </div>

@@ -7,14 +7,6 @@
         <br>
           {{app()->getLocale() == 'en' ? $settingInfo->footer_about_en : $settingInfo->footer_about_ar}}
       </div>
-
-
-
-
-
-
-
-
       <div class="col-lg-5">
           <h3>{{__('webMessage.contactus')}}</h3>
           <div class="widget widget-address">
@@ -55,7 +47,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6" class="{{ app()->getLocale() == 'ar' ? 'text-left' : '' }}">
-          &copy; Copyright 2022 MMA Kuwait - Al Rights Reserved
+          {!!__('webMessage.copyrights')!!}
         </div>
         <div class="col-md-6 text-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }}">
 

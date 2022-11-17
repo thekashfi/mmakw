@@ -7,7 +7,7 @@
 {{--            <h2>{{__('webMessage.ourservices')}}</h2>--}}
 
             @foreach($boxes as $box)
-            <div class="col-lg-3 mt-70 sm-mt0 text-middle text-light wow fadeInRight" data-wow-delay="0">
+            <div class="pt-4 col-lg-3 mt-70 sm-mt0 text-middle text-light wow fadeInRight" data-wow-delay="0">
                 <div class="shadow-soft" data-bgimage="url({{ $box->image ? url('uploads/boxes/'.$box->image) : url('uploads/no-image.png')}})">
                     <div class="padding40 overlay60">
                         <h3>@if(app()->getLocale()=="en") {{$box->title_en}} @else {{$box->title_ar}} @endif</h3>

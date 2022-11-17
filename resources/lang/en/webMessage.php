@@ -243,5 +243,6 @@ return [
 	'leaveacomment'         =>'Leave a Comment',
 	'comment_sent'          =>'Your comment has been sent successfully. And will be shown in site after confirmed.',
 	'comments'              =>'Comments',
+	'careers'              =>'CAREERS',
 
 ];
