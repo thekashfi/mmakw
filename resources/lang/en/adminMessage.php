@@ -416,4 +416,7 @@ return [
     'comments' => 'Comments',
     'approve' => 'Approve',
     'reject' => 'Reject',
+    'careers' => 'Careers',
+    'careerslisting' => 'Careers Listing',
+    'createnewcareer'      => 'Create New Career',
 ];

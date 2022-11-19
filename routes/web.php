@@ -92,6 +92,13 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/news-categories', 'AdminNewsCategoriesController', ['except' => 'destroy']);
 });
 
+//careers
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/careers/deletecareersImage/{id}','AdminCareersController@deleteImage');
+    Route::get('/gwc/careers/delete/{id}','AdminCareersController@destroy');
+    Route::resource('gwc/careers', 'AdminCareersController', ['except' => 'destroy']);
+});
+
 //contact us
 Route::group(['middleware' => ['admin']], function(){
 	Route::get('/gwc/contactus/subjects', 'AdminInboxController@showSubjects');

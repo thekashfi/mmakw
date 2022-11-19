@@ -3,7 +3,7 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.createnewsevents')}}</title>
+		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.createnewcareer')}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--css files -->
 		@include('gwc.css.user')
@@ -57,12 +57,12 @@
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">{{__('adminMessage.newsevents')}}</h3>
+									<h3 class="kt-subheader__title">{{__('adminMessage.careers')}}</h3>
 									<span class="kt-subheader__separator kt-hidden"></span>
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewsevents')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.createnewcareer')}}</a>
 									</div>
 								</div>
 								
@@ -97,14 +97,14 @@
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
-										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewsevents')}}</h3>
+										<h3 class="kt-portlet__head-title">{{__('adminMessage.createnewcareer')}}</h3>
 									</div>
 									<div class="kt-portlet__head-toolbar">
 										<div class="kt-portlet__head-wrapper">
 											<div class="kt-portlet__head-actions">
 												
 												@if(auth()->guard('admin')->user()->can('newsevents-list'))
-												<a href="{{url('gwc/newsevents')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.listnewsevents')}}</a> @endif
+												<a href="{{url('gwc/careers')}}" class="btn btn-brand btn-elevate btn-icon-sm"><i class="la la-list-ul"></i>{{__('adminMessage.careerslisting')}}</a> @endif
 											</div>
 										</div>
 									</div>
@@ -113,40 +113,11 @@
 					@if(auth()->guard('admin')->user()->can('newsevents-create'))
                     
                          <form name="tFrm"  id="form_validation"  method="post"
-                          class="kt-form" enctype="multipart/form-data" action="{{route('newsevents.store')}}">
+                          class="kt-form" enctype="multipart/form-data" action="{{route('careers.store')}}">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 											<div class="kt-portlet__body">
 										<!--parent categories dropdown -->	
                                            <div class="form-group row">
-                                                <div class="col-lg-4">
-                                                <div class="form-group row">
-													<label class="col-3 col-form-label">{{__('adminMessage.news')}}</label>
-													<div class="col-3">
-														<span class="kt-switch">
-															<label>
-																<input type="radio" checked="checked" name="ntype"  id="news" value="news"/>
-																<span></span>
-															</label>
-														</span>
-													</div>
-                                                    <label class="col-3 col-form-label">{{__('adminMessage.events')}}</label>
-													<div class="col-3">
-														<span class="kt-switch">
-															<label>
-																<input type="radio"  name="ntype"  id="event" value="event"/>
-																<span></span>
-															</label>
-														</span>
-													</div>
-                                                   </div> 
-                                                </div>
-                                                <div class="col-lg-2">
-                                                        <input type="text" id="news_date" class="form-control @if($errors->has('news_date')) is-invalid @endif" name="news_date"
-                                                               value="{{old('news_date')}}" autocomplete="off"  placeholder="{{__('adminMessage.date')}}" />
-                                                               @if($errors->has('news_date'))
-                                                               <div class="invalid-feedback">{{ $errors->first('news_date') }}</div>
-                                                               @endif
-                                                </div>
                                                 
                                                 <div class="col-lg-6">
                                                 <div class="form-group row">
@@ -164,6 +135,18 @@
 														<input type="text" class="form-control @if($errors->has('display_order')) is-invalid @endif" name="display_order"  value="{{old('display_order')?old('display_order'):$lastOrder}}" autocomplete="off" />
                                                                @if($errors->has('display_order'))
                                                                <div class="invalid-feedback">{{ $errors->first('display_order') }}</div>
+                                                               @endif
+													</div>
+												   </div>
+                                                </div>
+
+											   <div class="col-lg-6">
+                                                <div class="form-group row">
+													<label class="col-3 col-form-label">{{__('adminMessage.slug')}}</label>
+													<div class="col-5">
+														<input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug" autocomplete="off" />
+                                                               @if($errors->has('slug'))
+                                                               <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
                                                                @endif
 													</div>
 												   </div>
@@ -193,52 +176,17 @@
                                       <!--categories description -->          
                                             <div class="form-group row">
                                                 <div class="col-lg-6">
-                                                <label>{{__('adminMessage.details_en')}}</label>
-                                                        <textarea rows="3" id="details_en" name="details_en" class="kt-tinymce-4 form-control @if($errors->has('details_en')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enter_details_en')}}">{{old('details_en')}}</textarea>
-                                                               @if($errors->has('details_en'))
-                                                               <div class="invalid-feedback">{{ $errors->first('details_en') }}</div>
+                                                <label>{{__('adminMessage.description_en')}}</label>
+                                                        <textarea rows="3" id="description_en" name="description_en" class="kt-tinymce-4 form-control @if($errors->has('description_en')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enter_description_en')}}">{{old('description_en')}}</textarea>
+                                                               @if($errors->has('description_en'))
+                                                               <div class="invalid-feedback">{{ $errors->first('description_en') }}</div>
                                                                @endif
                                                 </div>
                                                 <div class="col-lg-6">
-                                                <label>{{__('adminMessage.details_ar')}}</label>
-                                                        <textarea   rows="3" id="details_ar" name="details_ar" class="kt-tinymce-4 form-control @if($errors->has('details_ar')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enter_details_ar')}}">{{old('details_ar')}}</textarea>
-                                                               @if($errors->has('details_ar'))
-                                                               <div class="invalid-feedback">{{ $errors->first('details_ar') }}</div>
-                                                               @endif
-                                                </div>
-                                            </div>
-                                        <!-- categories SEO keywords -->   
-                                      <div class="form-group row">
-                                                <div class="col-lg-6">
-                                                <label>{{__('adminMessage.seokeywords_en')}}</label>
-                                                        <textarea rows="3" name="seo_keywords_en" class="form-control @if($errors->has('seo_keywords_en')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enterseokeywords_en')}}">{{old('seo_keywords_en')}}</textarea>
-                                                               @if($errors->has('seo_keywords_en'))
-                                                               <div class="invalid-feedback">{{ $errors->first('seo_keywords_en') }}</div>
-                                                               @endif
-                                                </div>
-                                                <div class="col-lg-6">
-                                                <label>{{__('adminMessage.seokeywords_ar')}}</label>
-                                                        <textarea rows="3" name="seo_keywords_ar" class="form-control @if($errors->has('seo_keywords_ar')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enterseokeywords_ar')}}">{{old('seo_keywords_ar')}}</textarea>
-                                                               @if($errors->has('seo_keywords_ar'))
-                                                               <div class="invalid-feedback">{{ $errors->first('seo_keywords_ar') }}</div>
-                                                               @endif
-                                                </div>
-                                            </div>       
-                                    <!--categories SEO description-->
-                                            
-                                    <div class="form-group row">
-                                                <div class="col-lg-6">
-                                                <label>{{__('adminMessage.seodescription_en')}}</label>
-                                                        <textarea rows="3" name="seo_description_en" class="form-control @if($errors->has('seo_description_en')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enterseodescription_ar')}}">{{old('seo_description_en')}}</textarea>
-                                                               @if($errors->has('seo_description_en'))
-                                                               <div class="invalid-feedback">{{ $errors->first('seo_description_en') }}</div>
-                                                               @endif
-                                                </div>
-                                                <div class="col-lg-6">
-                                                <label>{{__('adminMessage.seodescription_ar')}}</label>
-                                                        <textarea rows="3" name="seo_description_ar" class="form-control @if($errors->has('seo_description_ar')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enterseodescription_ar')}}">{{old('seo_description_ar')}}</textarea>
-                                                               @if($errors->has('seo_description_ar'))
-                                                               <div class="invalid-feedback">{{ $errors->first('seo_description_ar') }}</div>
+                                                <label>{{__('adminMessage.description_ar')}}</label>
+                                                        <textarea   rows="3" id="description_ar" name="description_ar" class="kt-tinymce-4 form-control @if($errors->has('description_ar')) is-invalid @endif" autocomplete="off" placeholder="{{__('adminMessage.enter_description_ar')}}">{{old('description_ar')}}</textarea>
+                                                               @if($errors->has('description_ar'))
+                                                               <div class="invalid-feedback">{{ $errors->first('description_ar') }}</div>
                                                                @endif
                                                 </div>
                                             </div>
@@ -264,11 +212,9 @@
 													<label for="category_id">{{__('adminMessage.category')}}:</label>
 													<select class="form-control" name="category_id" id="category_id">
 														<option selected value="null">&lt;null&gt;</option>
-														@if(count($categories))
-															@foreach($categories as $category)
-																<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
-															@endforeach
-														@endif
+{{--														@foreach($categories as $category)--}}
+{{--															<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>--}}
+{{--														@endforeach--}}
 													</select>
 												</div>
 											</div>
@@ -278,7 +224,7 @@
 											<div class="kt-portlet__foot">
 												<div class="kt-form__actions">
 													<button type="submit" class="btn btn-success">{{__('adminMessage.save')}}</button>
-													<button type="button" onClick="Javascript:window.location.href='{{url('gwc/newsevents')}}'"  class="btn btn-secondary cancelbtn">{{__('adminMessage.cancel')}}</button>
+													<button type="button" onClick="Javascript:window.location.href='{{url('gwc/careers')}}'"  class="btn btn-secondary cancelbtn">{{__('adminMessage.cancel')}}</button>
 												</div>
 											</div>
 										</form>
