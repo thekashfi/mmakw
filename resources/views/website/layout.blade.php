@@ -50,7 +50,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <style>.g-recaptcha {transform:scale(0.90);transform-origin:0 0;}</style>
+    <style>
+        .g-recaptcha {transform:scale(0.90);transform-origin:0 0;}
+        @if(app()->getLocale() == 'ar')
+            h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span, li, button, div {
+                font-family: 'Noto Naskh Arabic' !important;
+            }
+        @endif
+    </style>
 
 </head>
 
@@ -66,7 +73,7 @@
         @yield('content')
 
         @if(count($clients))
-            <section class="{{ app()->getLocale() == 'ar' ? 'rtl' : '' }}">
+            <section class="{{ app()->getLocale() == 'ar' ? 'ltr' : '' }}">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3 text-center wow fadeInUp">

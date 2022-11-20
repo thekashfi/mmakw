@@ -27,8 +27,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="map-container map-fullwidth">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13938.142999145952!2d48.1134324876605!3d29.148880755746475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf0907fa1e4a5d%3A0x19d132e53b4fc50a!2sMahboula!5e0!3m2!1sen!2skw!4v1666197073572!5m2!1sen!2skw" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <div class="map-container map-fullwidth" id="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d616.0252528587384!2d48.12950155223321!3d29.14211905653006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf08e2caebb8b9%3A0xa5f4c084dfc7060c!2sMMA%20Law%20Firm!5e0!3m2!1sen!2s!4v1668941891425!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

@@ -9,11 +9,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>{{__('webMessage.newsevents')}}</h1>
+                    <h1>{{__('webMessage.careers')}}</h1>
                     <ul class="crumb">
                         <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
                         <li class="sep">/</li>
-                        <li>{{__('webMessage.newsevents')}}</li>
+                        <li>{{__('webMessage.careers')}}</li>
                     </ul>
                 </div>
             </div>
