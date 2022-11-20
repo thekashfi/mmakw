@@ -427,4 +427,9 @@ return [
     'careercategorieslisting'      => 'Career Categories List',
     'careercategories'      => 'Career Categories',
     'editcareergategory'      => 'Edit Career Category',
+    'resumeslisting'        => 'Resumes List',
+    'resumeslist'        => 'Resumes List',
+    'resumes'               => 'Resumes',
+    'show'                  => 'Show',
+    'resumedetails'         => 'Resume Details',
 ];

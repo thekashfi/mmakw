@@ -135,8 +135,8 @@ class AdminCareersController extends Controller
 	 //field validation  
 	   $this->validate($request, [
             'slug'     => 'nullable|min:3|max:255|string|unique:gwc_careers,slug,' . $request->id,
-			'title_en'     => 'required|min:3|max:190|string|unique:gwc_newsevents,title_en,'.$id,
-			'title_ar'     => 'required|min:3|max:190|string|unique:gwc_newsevents,title_ar,'.$id,
+			'title_en'     => 'required|min:3|max:190|string',
+			'title_ar'     => 'required|min:3|max:190|string',
            'description_en'   => 'required|min:3',
            'description_ar'   => 'required|min:3',
            'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000'

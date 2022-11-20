@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CareerCategory extends Model
 {
     protected $table = 'gwc_career_categories';
-    protected $fillable = ['display_order', 'name_en', 'name_ar'];
+    protected $fillable = ['display_order', 'name_en', 'name_ar', 'slug'];
 
     public function careers()
     {

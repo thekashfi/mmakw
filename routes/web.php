@@ -86,11 +86,11 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/service-categories', 'AdminServiceCategoriesController', ['except' => 'destroy']);
 });
 
-//news-categories
+//resumes
 Route::group(['middleware' => ['admin']], function() {
-    Route::get('/gwc/news-categories/delete/{id}','AdminNewsCategoriesController@destroy');
-    Route::resource('gwc/news-categories', 'AdminNewsCategoriesController', ['except' => 'destroy']);
+    Route::resource('gwc/resumes', 'AdminResumesController', ['only' => ['index', 'show']]);
 });
+Route::post('/apply','AdminResumesController@apply');
 
 //careers
 Route::group(['middleware' => ['admin']], function() {
@@ -281,6 +281,8 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/services/{slug}','webController@servicedetails');
 	Route::get('/members','webController@memberships');
 	Route::get('/news','webController@news');
+	Route::get('/careers','webController@careers');
+    Route::get('/careers/{slug}','webController@career');
 	Route::get('/team','webController@teams');
 	Route::post('/ajax_survey','webController@ajaxSurveyForm');
 	//user

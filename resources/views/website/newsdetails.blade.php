@@ -12,12 +12,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>{{ $newsdetails->category['name_' . app()->getLocale()] }}</h1>
-                <ul class="crumb">
-                    <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
-                    <li class="sep">/</li>
-                    <li>{{ $newsdetails->category['name_' . app()->getLocale()] }}</li>
-                </ul>
+                @if($newsdetails->category)
+                    <h1>{{ $newsdetails->category['name_' . app()->getLocale()] }}</h1>
+                    <ul class="crumb">
+                        <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
+                        <li class="sep">/</li>
+                        <li>{{ $newsdetails->category['name_' . app()->getLocale()] }}</li>
+                    </ul>
+                @else
+                    <ul class="crumb">
+                        <li><a href="{{url('')}}">{{__('webMessage.home')}}</a></li>
+                    </ul>
+                @endif
             </div>
         </div>
     </div>
@@ -153,3 +159,4 @@
         </div>
     </div>
 </div>
+@endsection

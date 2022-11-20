@@ -3,7 +3,7 @@
 <!-- begin::Head -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.editcareergategory')}}</title>
+    <title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.resumedetails')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--css files -->
     @include('gwc.css.user')
@@ -60,14 +60,14 @@
                     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                         <div class="kt-container  kt-container--fluid ">
                             <div class="kt-subheader__main">
-                                <h3 class="kt-subheader__title">{{__('adminMessage.careercategories')}}</h3>
+                                <h3 class="kt-subheader__title">{{__('adminMessage.resumes')}}</h3>
                                 <span class="kt-subheader__separator kt-hidden"></span>
                                 <div class="kt-subheader__breadcrumbs">
                                     <a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i
                                                 class="flaticon2-shelter"></i></a>
                                     <span class="kt-subheader__breadcrumbs-separator"></span>
                                     <a href="javascript:;"
-                                       class="kt-subheader__breadcrumbs-link">{{__('adminMessage.editcareergategory')}}</a>
+                                       class="kt-subheader__breadcrumbs-link">{{__('adminMessage.resumedetails')}}</a>
                                 </div>
                             </div>
 
@@ -102,7 +102,7 @@
 										<span class="kt-portlet__head-icon">
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
-                                    <h3 class="kt-portlet__head-title">{{__('adminMessage.editcareergategory')}}</h3>
+                                    <h3 class="kt-portlet__head-title">{{__('adminMessage.resumedetails')}}</h3>
                                 </div>
                                 <div class="kt-portlet__head-toolbar">
                                     <div class="kt-portlet__head-wrapper">
@@ -111,7 +111,7 @@
                                             @if(auth()->guard('admin')->user()->can('services-list'))
                                                 <a href="{{url('gwc/career-categories')}}"
                                                    class="btn btn-brand btn-elevate btn-icon-sm"><i
-                                                            class="la la-list-ul"></i>{{__('adminMessage.listcategories')}}
+                                                            class="la la-list-ul"></i>{{__('adminMessage.resumeslist')}}
                                                 </a>
                                             @endif
                                         </div>
@@ -120,58 +120,35 @@
                             </div>
                             <!--begin::Form-->
                             @if(auth()->guard('admin')->user()->can('services-edit'))
-                                <form name="tFrm" id="form_validation" method="post" class="kt-form"
-                                      enctype="multipart/form-data"
-                                      action="{{route('career-categories.update',$category->id)}}">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    @method('put')
                                     <div class="kt-portlet__body">
-
-{{--                                        <div class="form-group row">--}}
-{{--                                            <div class="col-lg-4">--}}
-{{--                                                <div class="form-group row">--}}
-{{--                                                    <label class="col-3 col-form-label">{{__('adminMessage.displayorder')}}</label>--}}
-{{--                                                    <div class="col-3">--}}
-{{--                                                        <input type="text" class="form-control @if($errors->has('display_order')) is-invalid @endif" name="display_order"  value="{{ old('display_order', $category->display_order) }}" autocomplete="off" />--}}
-{{--                                                        @if($errors->has('display_order'))--}}
-{{--                                                            <div class="invalid-feedback">{{ $errors->first('display_order') }}</div>--}}
-{{--                                                        @endif--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-
-                                        <!--categories name -->
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>{{__('adminMessage.name_en')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('name_en')) is-invalid @endif" name="name_en"
-                                                       value="{{ old('name_en', $category->name_en) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_name_en')}}" />
-                                                @if($errors->has('name_en'))
-                                                    <div class="invalid-feedback">{{ $errors->first('name_en') }}</div>
-                                                @endif
+                                                <label>{{__('adminMessage.name')}}</label>
+                                                <p class="text-body">{{ $resume->name }}</p>
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>{{__('adminMessage.name_ar')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('name_ar')) is-invalid @endif" name="name_ar"
-                                                       value="{{ old('name_ar', $category->name_ar) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_name_ar')}}" />
-                                                @if($errors->has('name_ar'))
-                                                    <div class="invalid-feedback">{{ $errors->first('name_ar') }}</div>
-                                                @endif
+                                                <label>{{__('adminMessage.email')}}</label>
+                                                <p class="text-body">{{ $resume->email }}</p>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>{{__('adminMessage.slug')}}</label>
-                                                <input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug"
-                                                       value="{{ old('slug', $category->slug) }}" autocomplete="off" placeholder="{{__('adminMessage.enter_slug')}}" />
-                                                @if($errors->has('slug'))
-                                                    <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
-                                                @endif
+                                                <label>{{__('adminMessage.mobile')}}</label>
+                                                <p class="text-body">{{ $resume->mobile }}</p>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>{{__('adminMessage.file')}}</label>
+                                                <a href="{{ url('uploads/resumes') . '/' . $resume->file }}">
+                                                    Download
+                                                </a>
                                             </div>
                                         </div>
-
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <label>{{__('adminMessage.message')}}</label>
+                                                <p class="text-body">{{ $resume->message }}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="kt-portlet__foot">
                                         <div class="kt-form__actions">

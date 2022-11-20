@@ -32,6 +32,7 @@ class AdminCareerCategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'slug'     => 'required|max:255|string|unique:gwc_career_categories,slug',
             'name_en'     => 'required|max:255|string',
             'name_ar'     => 'required|max:255|string',
         ]);
@@ -63,6 +64,7 @@ class AdminCareerCategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'slug'     => 'required|max:255|string',
             'name_en'     => 'required|max:255|string',
             'name_ar'     => 'required|max:255|string',
         ]);

@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Attribute;
 use App\Box;
+use App\Career;
+use App\CareerCategory;
 use App\Comment;
 use App\NewsCategory;
 use App\ServiceCategory;
@@ -329,6 +331,30 @@ class webController extends Controller
 	 return view('website.news',compact('settingInfo','practiceareaMenus','servicesMenus','NewsLists','memberslists'));
 	 
 	}
+
+	public function careers() {
+	  $settingInfo       = Settings::where("keyname","setting")->first();
+	  $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	  $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	  $memberslists      = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+      if(request()->filled('cat'))
+	    $careers         = Career::where("category_id", CareerCategory::whereSlug(request()->cat)->firstOrFail()->id)->latest()->with('category')->paginate($settingInfo->item_per_page_front);
+      else
+        $careers         = Career::latest()->with('category')->paginate($settingInfo->item_per_page_front);
+
+	 return view('website.careers',compact('settingInfo','practiceareaMenus','servicesMenus','careers','memberslists'));
+	}
+
+    public function career($slug){
+        $settingInfo       = Settings::where("keyname","setting")->first();
+        $career            = Career::where('slug',$slug)->with('category')->first();
+        $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        $memberslists      = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+        $career_categories = CareerCategory::withCount('careers')->orderBy('careers_count', 'desc')->has('careers')->with('careers')->get();
+
+        return view('website.career',compact('settingInfo','career','practiceareaMenus','servicesMenus','memberslists','career_categories'));
+    }
 
 	public function submitComment(Request $request){
         // store comment

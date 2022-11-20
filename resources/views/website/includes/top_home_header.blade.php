@@ -78,7 +78,7 @@
                                     <a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="{{url('/news')}}">{{__('webMessage.careers')}}</a>
+                                            <a href="{{url('/careers')}}">{{__('webMessage.careers')}}</a>
                                         </li>
                                         <li>
                                             <a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a>

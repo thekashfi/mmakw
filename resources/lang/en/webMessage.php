@@ -243,6 +243,9 @@ return [
 	'leaveacomment'         =>'Leave a Comment',
 	'comment_sent'          =>'Your comment has been sent successfully. And will be shown in site after confirmed.',
 	'comments'              =>'Comments',
-	'careers'              =>'CAREERS',
-
+	'careers'               =>'Careers',
+	'apply_for_position'    =>'Apply for Position',
+	'uploadcv'              =>'Upload CV',
+	'resume_sent'           =>'thanks for applying for the position.',
+	'applynow'              =>'Apply Now',
 ];
