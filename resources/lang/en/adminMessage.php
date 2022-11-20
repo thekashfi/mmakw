@@ -419,4 +419,12 @@ return [
     'careers' => 'Careers',
     'careerslisting' => 'Careers Listing',
     'createnewcareer'      => 'Create New Career',
+    'listcareers'      => 'List Careers',
+    'editcareer'      => 'Edit Career',
+    'createnewcareercategory'      => 'Create New Career Category',
+    'createnewcareercategories'      => 'Create New Career Category',
+    'listcareercategories'      => 'List Career Categories',
+    'careercategorieslisting'      => 'Career Categories List',
+    'careercategories'      => 'Career Categories',
+    'editcareergategory'      => 'Edit Career Category',
 ];

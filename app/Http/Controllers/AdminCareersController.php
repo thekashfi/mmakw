@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Career;
+use App\CareerCategory;
 use App\NewsCategory;
 use Illuminate\Http\Request;
 use App\NewsEvents;
@@ -33,7 +34,7 @@ class AdminCareersController extends Controller
 	}else{
 	$lastOrder=1;
 	}
-	return view('gwc.careers.create')->with(['lastOrder'=>$lastOrder/*, 'categories' => NewsCategory::get()*/]);
+	return view('gwc.careers.create')->with(['lastOrder'=>$lastOrder, 'categories' => CareerCategory::get()]);
 	}
 	
 
@@ -99,9 +100,9 @@ class AdminCareersController extends Controller
      */
     public function edit($id)
     {
-	    $editnewsevents = NewsEvents::find($id);
-        $categories = NewsCategory::get();
-        return view('gwc.newsevents.edit',compact('editnewsevents', 'categories'));
+        $career = Career::find($id);
+        $categories = CareerCategory::get();
+        return view('gwc.careers.edit',compact('career', 'categories'));
     }
 	
 	
@@ -131,104 +132,72 @@ class AdminCareersController extends Controller
     public function update(Request $request, $id)
     {
 	 $settingInfo = Settings::where("keyname","setting")->first();
-	    //if(!empty($settingInfo->image_thumb_w) && !empty($settingInfo->image_thumb_h)){
-		//$image_thumb_w = $settingInfo->image_thumb_w;
-		//$image_thumb_h = $settingInfo->image_thumb_h;
-		//}else{
-		$image_thumb_w = 360;
-		$image_thumb_h = 239;
-		//}
-		
-		//if(!empty($settingInfo->image_big_w) && !empty($settingInfo->image_big_h)){
-		//$image_big_w = $settingInfo->image_big_w;
-		//$image_big_h = $settingInfo->image_big_h;
-		//}else{
-		$image_big_w = 600;
-		$image_big_h = 399;
-		//}
-		
 	 //field validation  
 	   $this->validate($request, [
+            'slug'     => 'nullable|min:3|max:255|string|unique:gwc_careers,slug,' . $request->id,
 			'title_en'     => 'required|min:3|max:190|string|unique:gwc_newsevents,title_en,'.$id,
 			'title_ar'     => 'required|min:3|max:190|string|unique:gwc_newsevents,title_ar,'.$id,
-			'details_en'   => 'required|min:3',
-			'details_ar'   => 'required|min:3',
-			'image'        => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+           'description_en'   => 'required|min:3',
+           'description_ar'   => 'required|min:3',
+           'image'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5000'
         ]);
 		
-	$newsevents = NewsEvents::find($id);
+	$career = Career::find($id);
 	$imageName='';
 	//upload image
 	if($request->hasfile('image')){
 	//delete image from folder
-	if(!empty($newsevents->image)){
-	$web_image_path = "/uploads/newsevents/".$newsevents->image;
-	$web_image_paththumb = "/uploads/newsevents/thumb/".$newsevents->image;
+	if(!empty($career->image)){
+	$web_image_path = "/uploads/careers/".$career->image;
+	$web_image_paththumb = "/uploads/careers/thumb/".$career->image;
 	if(File::exists(public_path($web_image_path))){
 	   File::delete(public_path($web_image_path));
 	   File::delete(public_path($web_image_paththumb));
 	 }
 	}
-	//
+
 	$imageName = 'b-'.md5(time()).'.'.$request->image->getClientOriginalExtension();
 	
-	$request->image->move(public_path('uploads/newsevents'), $imageName);
+	$request->image->move(public_path('uploads/careers'), $imageName);
 	//create thumb
 	// open file a image resource
-    $imgbig = Image::make(public_path('uploads/newsevents/'.$imageName));
+    $imgbig = Image::make(public_path('uploads/careers/'.$imageName));
 	//resize image
-	$imgbig->resize($image_big_w,$image_big_h);//Fixed w,h
 	
-	if($settingInfo->is_watermark==1 && !empty($settingInfo->watermark_img)){
-	// insert watermark at bottom-right corner with 10px offset
-    $imgbig->insert(public_path('uploads/newsevents/'.$settingInfo->watermark_img), 'bottom-right', 10, 10);
-	}
+	// if($settingInfo->is_watermark==1 && !empty($settingInfo->watermark_img)){
+	// // insert watermark at bottom-right corner with 10px offset
+    // $imgbig->insert(public_path('uploads/careers/'.$settingInfo->watermark_img), 'bottom-right', 10, 10);
+	// }
 	// save to imgbig thumb
-	$imgbig->save(public_path('uploads/newsevents/'.$imageName));
+	$imgbig->save(public_path('uploads/careers/'.$imageName));
 	
 	//create thumb
-	// open file a image resource
-    $img = Image::make(public_path('uploads/newsevents/'.$imageName));
-	//resize image
-	$img->resize($image_thumb_w,$image_thumb_h);//Fixed w,h
+    $img = Image::make(public_path('uploads/careers/'.$imageName));
+	$img->widen(200);//Fixed w,h
 	// save to thumb
-	$img->save(public_path('uploads/newsevents/thumb/'.$imageName));
+	$img->save(public_path('uploads/careers/thumb/'.$imageName));
 	
 	}else{
-	$imageName = $newsevents->image;
+	$imageName = $career->image;
 	}
-	
-	//slug
-		$slug = new NewsEventsSlug;
-		
-		$newsevents->slug=$slug->createSlug($request->title_en,$id);
-        $newsevents->category_id=$request->input('category_id') != 'null' ? $request->input('category_id') : null;
-		$newsevents->title_en=$request->input('title_en');
-		$newsevents->title_ar=$request->input('title_ar');
-		$newsevents->details_en=$request->input('details_en');
-		$newsevents->details_ar=$request->input('details_ar');
-		$newsevents->seo_keywords_en=$request->input('seo_keywords_en');
-		$newsevents->seo_keywords_ar=$request->input('seo_keywords_ar');
-		$newsevents->seo_description_en=$request->input('seo_description_en');
-		$newsevents->seo_description_ar=$request->input('seo_description_ar');
-		$newsevents->is_active=!empty($request->input('is_active'))?$request->input('is_active'):'0';
-		$newsevents->display_order=!empty($request->input('display_order'))?$request->input('display_order'):'0';
-		$newsevents->ntype=!empty($request->input('ntype'))?$request->input('ntype'):'news';
-		$newsevents->news_Date=!empty($request->input('news_Date'))?$request->input('news_Date'):date("Y-m-d");
-		$newsevents->image=$imageName;
-		$newsevents->save();
-		
+
+
+    $is_active = !empty($request->input('is_active')) ? $request->input('is_active') : 0;
+    $request = new Request($request->all());
+    $request->merge(['image' => $imageName, 'is_active' => $is_active, 'category_id' => $request->input('category_id') != 'null' ? $request->input('category_id') : null]);
+    $career->fill($request->all())->save();
+
 		
 		//save logs
-		$key_name   = "news";
-		$key_id     = $newsevents->id;
-		$message    = "Record for news & events is edited. (".$newsevents->title_en.")";
+		$key_name   = "careers";
+		$key_id     = $career->id;
+		$message    = "Record for careers is edited. (".$career->title_en.")";
 		$created_by = Auth::guard('admin')->user()->id;
 		Common::saveLogs($key_name,$key_id,$message,$created_by);
 		//end save logs
 		
 		
-	    return redirect('/gwc/newsevents')->with('message-success','Information is updated successfully');
+	    return redirect('/gwc/careers')->with('message-success','Information is updated successfully');
 	}
 	
 	/**
@@ -240,24 +209,24 @@ class AdminCareersController extends Controller
      */
 	
 	public function deleteImage($id){
-	$newsevents = NewsEvents::find($id);
+	$career = Career::find($id);
 	//delete image from folder
-	if(!empty($newsevents->image)){
-	$web_image_path = "/uploads/newsevents/".$newsevents->image;
-	$web_image_paththumb = "/uploads/newsevents/thumb/".$newsevents->image;
+	if(!empty($career->image)){
+	$web_image_path = "/uploads/careers/".$career->image;
+	$web_image_paththumb = "/uploads/careers/thumb/".$career->image;
 	if(File::exists(public_path($web_image_path))){
 	   File::delete(public_path($web_image_path));
 	   File::delete(public_path($web_image_paththumb));
 	 }
 	}
 	
-	$newsevents->image='';
-	$newsevents->save();
+	$career->image='';
+	$career->save();
 	
 	   //save logs
-		$key_name   = "news";
-		$key_id     = $newsevents->id;
-		$message    = "Image is removed. (".$newsevents->title_en.")";
+		$key_name   = "careers";
+		$key_id     = $career->id;
+		$message    = "Image is removed. (".$career->title_en.")";
 		$created_by = Auth::guard('admin')->user()->id;
 		Common::saveLogs($key_name,$key_id,$message,$created_by);
 		//end save logs
@@ -274,51 +243,41 @@ class AdminCareersController extends Controller
      * @return \Illuminate\Http\Response
      */
 	 public function destroy($id){
-	 //check param ID
-	 if(empty($id)){
-	 return redirect('/gwc/newsevents')->with('message-error','Param ID is missing'); 
-	 }
-	 //get cat info
-	 $newsevents = NewsEvents::find($id);
-	 //check cat id exist or not
-	 if(empty($newsevents->id)){
-	 return redirect('/gwc/newsevents')->with('message-error','No record found'); 
+         //check param ID
+         if(empty($id)){
+         return redirect('/gwc/careers')->with('message-error','Param ID is missing');
+         }
+         //get cat info
+         $career = Career::find($id);
+         //check cat id exist or not
+         if(empty($career->id)){
+         return redirect('/gwc/careers')->with('message-error','No record found');
+         }
+
+         //delete parent cat mage
+         if(!empty($career->image)){
+         $web_image_path = "/uploads/careers/".$career->image;
+         $web_image_paththumb = "/uploads/careers/thumb/".$career->image;
+         if(File::exists(public_path($web_image_path))){
+           File::delete(public_path($web_image_path));
+           File::delete(public_path($web_image_paththumb));
+          }
+         }
+
+         //save logs
+            $key_name   = "careers";
+            $key_id     = $career->id;
+            $message    = "A record is removed. (".$career->title_en.")";
+            $created_by = Auth::guard('admin')->user()->id;
+            Common::saveLogs($key_name,$key_id,$message,$created_by);
+            //end save logs
+
+
+         //end deleting parent cat image
+         $career->delete();
+         return redirect()->back()->with('message-success','career is deleted successfully');
 	 }
 
-	 //delete parent cat mage
-	 if(!empty($newsevents->image)){
-	 $web_image_path = "/uploads/newsevents/".$newsevents->image;
-	 $web_image_paththumb = "/uploads/newsevents/thumb/".$newsevents->image;
-	 if(File::exists(public_path($web_image_path))){
-	   File::delete(public_path($web_image_path));
-	   File::delete(public_path($web_image_paththumb));
-	  }
-	 }
-	 
-	 //save logs
-		$key_name   = "news";
-		$key_id     = $newsevents->id;
-		$message    = "A record is removed. (".$newsevents->title_en.")";
-		$created_by = Auth::guard('admin')->user()->id;
-		Common::saveLogs($key_name,$key_id,$message,$created_by);
-		//end save logs
-		
-		
-	 //end deleting parent cat image
-	 $newsevents->delete();
-	 return redirect()->back()->with('message-success','newsevents is deleted successfully');	
-	 }
-	 
-	 
-	 
-		//download pdf
-	
-	public function downloadPDF(){
-	  $newsevents = NewsEvents::get();
-      $pdf = PDF::loadview('gwc.newsevents.pdf', compact('newsevents'));
-      return $pdf->download('newsevents.pdf');
-    }
-	
     //update status
 	public function updateStatusAjax(Request $request)
     {

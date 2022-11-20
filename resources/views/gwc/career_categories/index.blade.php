@@ -4,7 +4,7 @@
 	<head>
 		<base href="../../">
 		<meta charset="utf-8" />
-		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.careers')}}</title>
+		<title>{{__('adminMessage.websiteName')}}|{{__('adminMessage.career_categories')}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--css files -->
 		@include('gwc.css.user')
@@ -60,12 +60,12 @@
 						<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 							<div class="kt-container  kt-container--fluid ">
 								<div class="kt-subheader__main">
-									<h3 class="kt-subheader__title">{{__('adminMessage.careers')}}</h3>
+									<h3 class="kt-subheader__title">{{__('adminMessage.careercategories')}}</h3>
 									<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.careerslisting')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.careercategorieslisting')}}</a>
                                         
 									</div>
 								</div>
@@ -89,9 +89,27 @@
 											</div>
 										</form>
 									<div class="btn-group">
-                                        @if(auth()->guard('admin')->user()->can('newsevents-create'))
-										<a href="{{url('gwc/careers/create')}}" class="btn btn-brand btn-bold"><i class="la la-plus"></i>&nbsp;{{__('adminMessage.createnew')}}</a>
+                                        @if(auth()->guard('admin')->user()->can('services-create'))
+										<a href="{{url('gwc/career-categories/create')}}" class="btn btn-brand btn-bold"><i class="la la-plus"></i>&nbsp;{{__('adminMessage.createnew')}}</a>
+
+
+
+
                                         @endif
+										<!--<button type="button" class="btn btn-brand btn-bold dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										</button>
+										<div class="dropdown-menu dropdown-menu-right">
+											<ul class="kt-nav">
+												
+                                                <li class="kt-nav__item">
+													<a href="{{url('gwc/services/pdf')}}" class="kt-nav__link">
+														<i class="kt-nav__link-icon flaticon-file-2"></i>
+														<span class="kt-nav__link-text">{{__('adminMessage.downloadpdf')}}</span>
+													</a>
+												</li>
+												
+											</ul>
+										</div>-->
 									</div>
 								</div>
 							</div>
@@ -124,13 +142,13 @@
 											<i class="kt-font-brand flaticon2-line-chart"></i>
 										</span>
 										<h3 class="kt-portlet__head-title">
-											{{__('adminMessage.careerslisting')}}
+											{{__('adminMessage.careercategorieslisting')}}
 										</h3>
 									</div>
 								</div>
                       
 								<div class="kt-portlet__body">
-                                @if(auth()->guard('admin')->user()->can('newsevents-list'))
+                                @if(auth()->guard('admin')->user()->can('services-list'))
 									<!--begin: Datatable -->
 									<table class="table table-striped- table-bordered table-hover table-checkable " id="kt_table_1">
 										<thead>
@@ -138,41 +156,32 @@
 												<th width="10">#</th>
 												<th>{{__('adminMessage.title_en')}}</th>
 												<th>{{__('adminMessage.title_ar')}}</th>
-												<th width="10">{{__('adminMessage.image')}}</th>
-												<th width="10">{{__('adminMessage.status')}}</th>
 												<th width="100">{{__('adminMessage.createdat')}}</th>
 												<th width="100">{{__('adminMessage.updatedat')}}</th>
 												<th width="10">{{__('adminMessage.actions')}}</th>
 											</tr>
 										</thead>
 										<tbody>
-                                        @if(count($careers))
+                                        @if(count($categories))
                                         @php $p=1; @endphp
-                                        @foreach($careers as $career)
+                                        @foreach($categories as $category)
 											<tr class="search-body">
 												<td>{{$p}}</td>
-												<td>{!! $career->title_en !!}</td>
-												<td>{!! $career->title_ar !!}</td>
-												<td>
-                                                @if($career->image)
-                                                <img src="{!! url('uploads/careers/thumb/'.$career->image) !!}" width="40">
-                                                @endif</td>
-												<td>
-                                                <span class="kt-switch"><label><input value="{{$career->id}}" {{!empty($career->is_active)?'checked':''}} type="checkbox"  id="newsevents" class="change_status"><span></span></label></span>
-                                                </td>
-												<td>{!! $career->created_at !!}</td>
-												<td>{!! $career->updated_at !!}</td>
+												<td>{!! $category->name_en !!}</td>
+												<td>{!! $category->name_ar !!}</td>
+												<td>{!! $category->created_at !!}</td>
+												<td>{!! $category->updated_at !!}</td>
                                                 <td class="kt-datatable__cell">
                                                  <span style="overflow: visible; position: relative; width: 80px;">
                                                  <div class="dropdown">
                                                  <a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown"><i class="flaticon-more-1"></i></a>
                                                  <div class="dropdown-menu dropdown-menu-right">
                                                  <ul class="kt-nav">
-                                                 @if(auth()->guard('admin')->user()->can('newsevents-edit'))
-                                                 <li class="kt-nav__item"><a href="{{url('gwc/careers/'.$career->id.'/edit')}}" class="kt-nav__link"><i class="kt-nav__link-icon flaticon2-contract"></i><span class="kt-nav__link-text">{{__('adminMessage.edit')}}</span></a></li>
+                                                 @if(auth()->guard('admin')->user()->can('services-edit'))
+                                                 <li class="kt-nav__item"><a href="{{url('gwc/career-categories/'.$category->id.'/edit')}}" class="kt-nav__link"><i class="kt-nav__link-icon flaticon2-contract"></i><span class="kt-nav__link-text">{{__('adminMessage.edit')}}</span></a></li>
                                                  @endif
-                                                 @if(auth()->guard('admin')->user()->can('newsevents-delete'))
-                                                 <li class="kt-nav__item"><a href="javascript:;" data-toggle="modal" data-target="#kt_modal_{{$career->id}}" class="kt-nav__link"><i class="kt-nav__link-icon flaticon2-trash"></i><span class="kt-nav__link-text">{{__('adminMessage.delete')}}</span></a></li>
+                                                 @if(auth()->guard('admin')->user()->can('services-delete'))
+                                                 <li class="kt-nav__item"><a href="javascript:;" data-toggle="modal" data-target="#kt_modal_{{$category->id}}" class="kt-nav__link"><i class="kt-nav__link-icon flaticon2-trash"></i><span class="kt-nav__link-text">{{__('adminMessage.delete')}}</span></a></li>
                                                  @endif
                                                  </ul>
                                                  </div>
@@ -180,7 +189,7 @@
                                                  </span>
                                                  
                                                  <!--Delete modal -->
- <div class="modal fade" id="kt_modal_{{$career->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" id="kt_modal_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -193,7 +202,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('adminMessage.no')}}</button>
-											<button type="button" class="btn btn-danger"  onClick="Javascript:window.location.href='{{url('gwc/careers/delete/'.$career->id)}}'">{{__('adminMessage.yes')}}</button>
+											<button type="button" class="btn btn-danger"  onClick="Javascript:window.location.href='{{url('gwc/career-categories/delete/'.$category->id)}}'">{{__('adminMessage.yes')}}</button>
 										</div>
 									</div>
 								</div>
@@ -203,7 +212,7 @@
                                         
                                         @php $p++; @endphp
                                         @endforeach   
-                                        <tr><td colspan="8" class="text-center">{{ $careers->links() }}</td></tr>
+                                        <tr><td colspan="8" class="text-center">{{ $categories->links() }}</td></tr>
                                         @else
                                         <tr><td colspan="8" class="text-center">{{__('adminMessage.recordnotfound')}}</td></tr>
                                         @endif    

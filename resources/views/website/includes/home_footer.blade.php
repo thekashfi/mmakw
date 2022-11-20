@@ -32,7 +32,7 @@
           <ul>
             <li><a href="{{url('/')}}">{{__('webMessage.home')}}</a></li>
             <li><a href="{{url('/#about')}}">{{__('webMessage.aboutus')}}</a></li>
-            <li><a href="#">{{__('webMessage.practicearea')}}</a></li>
+            <li><a href="{{ url('') .'/practice/'. \App\Practice::first()->slug }}">{{__('webMessage.practicearea')}}</a></li>
             <li><a href="{{url('/#services')}}">{{__('webMessage.services')}}</a></li>
             <li><a href="{{url('/members')}}">{{__('webMessage.membershiplistings')}}</a></li>
             <li><a href="{{url('/news')}}">{{__('webMessage.newsevents')}}</a></li>
