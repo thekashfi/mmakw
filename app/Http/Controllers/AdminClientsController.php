@@ -117,8 +117,10 @@ class AdminClientsController extends Controller
 		$image_big_w = $settingInfo->image_big_w;
 		$image_big_h = $settingInfo->image_big_h;
 		}else{
-		$image_big_w = 800;
-		$image_big_h = 800;
+		// $image_big_w = 800;
+		// $image_big_h = 800;
+        $image_big_w = 180;
+        $image_big_h = 60;
 		}
 		//field validation
 	    $this->validate($request, [
@@ -270,8 +272,8 @@ class AdminClientsController extends Controller
 		$image_big_w = $settingInfo->image_big_w;
 		$image_big_h = $settingInfo->image_big_h;
 		}else{
-		$image_big_w = 800;
-		$image_big_h = 800;
+        $image_big_w = 180;
+        $image_big_h = 60;
 		}
 		
 	 //field validation  

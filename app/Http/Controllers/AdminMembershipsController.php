@@ -66,8 +66,10 @@ class AdminMembershipsController extends Controller
 		//$image_big_w = $settingInfo->image_big_w;
 		//$image_big_h = $settingInfo->image_big_h;
 		//}else{
-		$image_big_w = 570;
-		$image_big_h = 386;
+		// $image_big_w = 570;
+		// $image_big_h = 386;
+        $image_big_w = 370;
+        $image_big_h = 186;
 		//}
 		//field validation
 	    $this->validate($request, [
@@ -171,8 +173,10 @@ class AdminMembershipsController extends Controller
 		//$image_big_w = $settingInfo->image_big_w;
 		//$image_big_h = $settingInfo->image_big_h;
 		//}else{
-		$image_big_w = 570;
-		$image_big_h = 386;
+		// $image_big_w = 570;
+		// $image_big_h = 386;
+		$image_big_w = 370;
+		$image_big_h = 186;
 		//}
 	 //field validation  
 	    $this->validate($request, [
