@@ -811,7 +811,9 @@ jQuery(document).ready(function () {
         items: 6,
         loop:true,
 		dots: false,
-        autoPlay: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplaySpeed: 1000,
         responsive:{
             1000:{
                 items:6

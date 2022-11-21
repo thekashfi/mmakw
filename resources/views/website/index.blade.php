@@ -35,7 +35,7 @@
             <!-- section close -->
 
             <!-- section begin -->
-            <section id="section-portfolio services" class="no-top no-bottom" aria-label="section-portfolio">
+            <section id="section-portfolio" class="no-top no-bottom" aria-label="section-portfolio">
                 <div class="container">
 
                     <div class="spacer-single"></div>
