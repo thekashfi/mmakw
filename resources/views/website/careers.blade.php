@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="post-text">
                                         @if($career->category)
-                                            <span class="p-tagline">{{ app()->getLocale()=="en" ? optional($career->category)->name_en : optional($career->category)->name_ar }}</span>
+                                            <span class="p-tagline @if(app()->getLocale() == "ar" ) p-tagline-rtl @endif">{{ app()->getLocale()=="en" ? optional($career->category)->name_en : optional($career->category)->name_ar }}</span>
                                         @endif
                                         <h4>
                                             <a href="{{url('careers/'.$career->slug)}}">

@@ -35,7 +35,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/services/{id}','AdminServicesController@update');
 	Route::get('/gwc/services/deleteservicesImage/{id}','AdminServicesController@deleteImage');
 	Route::get('/gwc/services/delete/{id}','AdminServicesController@destroy');
-	Route::get('/gwc/services/ajax/{id}','AdminServicesController@updateStatusAjax');
+	Route::get('/admin/services/ajax/{id}','AdminServicesController@updateStatusAjax');
 	Route::get('/gwc/services/pdf','AdminServicesController@downloadPDF');
 	Route::resource('gwc/services', 'AdminServicesController');
 });

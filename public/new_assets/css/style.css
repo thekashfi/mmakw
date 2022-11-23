@@ -187,6 +187,10 @@ body.no-scroll::-webkit-scrollbar {
 float: left;
 margin: 0 20px 20px 0;
 }
+.pic_right{
+float: right;
+margin: 0 20px 0 20px;
+}
 
 .clear30x{
 	clear: both;
@@ -1665,6 +1669,11 @@ footer {
 		z-index: 1;
 		top: 20px;
 		left: 20px;
+	}
+
+	.p-tagline-rtl{
+		left: auto !important;
+		right: 20px !important;
 	}
 
 	.p-tagline, .p-title{
@@ -3238,7 +3247,7 @@ left: 0;
 	/* ------------------------------ */
 	h1, h2, h3, h4, h5, h6 {
 	color: #07003b;
-	font-family: 'Poppins',Arial, Helvetica, sans-serif
+	font-family: 'Poppins',Arial, Helvetica, sans-serif;
 	font-weight:400;
 	}
 	
