@@ -13,7 +13,7 @@ return [
     |
     */
 
-	'copyrights'            =>'Copyright &copy; '.date('Y').' MMA Kuwait. All rights reserved.',
+	'copyrights'            =>'Copyright &copy; '.date('Y').' MMA Law. All rights reserved.',
 	'home'                  =>'Home', 
 	'aboutus'               =>'About us',
 	'contactus'             =>'Contact us',
@@ -53,6 +53,7 @@ return [
 	'mission'               =>'Mission',
 	'vision'                =>'Vision',
 	'team'                  =>'Team',
+	'ourteam'                  =>'Our Team',
 	'services'              =>'Services',
 	'membershiplistings'    =>'Membership & Listings',
 	'practiceareas'         =>'Practice Areas',

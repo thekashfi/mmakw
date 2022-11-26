@@ -1,4 +1,15 @@
-<header class="transparent">
+<style>
+    @media screen and (min-width: 993px) {
+        ul#mainmenu a{
+            padding-left: 8px;
+        }
+        .new-header {
+            height: 80px !important;
+            background: #18191b !important;
+        }
+    }
+</style>
+<header class="transparent new-header">
     <div class="info">
         <div class="container">
             <div class="row">
