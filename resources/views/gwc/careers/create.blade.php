@@ -144,7 +144,7 @@
                                                 <div class="form-group row">
 													<label class="col-3 col-form-label">{{__('adminMessage.slug')}}</label>
 													<div class="col-5">
-														<input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug" autocomplete="off" />
+														<input type="text" class="form-control @if($errors->has('slug')) is-invalid @endif" name="slug" value="{{old('slug')}}" autocomplete="off" />
                                                                @if($errors->has('slug'))
                                                                <div class="invalid-feedback">{{ $errors->first('slug') }}</div>
                                                                @endif
@@ -214,7 +214,7 @@
 														<option selected value="null">&lt;null&gt;</option>
 														@if(count($categories))
 															@foreach($categories as $category)
-																<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
+																<option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
 															@endforeach
 														@endif
 													</select>

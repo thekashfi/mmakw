@@ -47,7 +47,8 @@
                                             </a>
                                         </h4>
                                         <p>{{ \Illuminate\Support\Str::words(strip_tags($career["description_" . app()->getLocale()]), 22, '...') }}</p>
-                                        <span class="p-date">{{ $career->created_at->format('F d, Y') }}</span>
+{{--                                        <span class="p-date">{{ $career->created_at->format('F d, Y') }}</span>--}}
+                                        <span class="p-date">{{ Carbon\Carbon::parse($career->created_at)->translatedFormat('F d, Y') }}</span>
                                     </div>
                                 </div>
                             </div>

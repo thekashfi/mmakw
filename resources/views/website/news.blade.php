@@ -47,7 +47,8 @@
                                             </a>
                                         </h4>
                                         <p>{{ \Illuminate\Support\Str::words(strip_tags($news["details_" . app()->getLocale()]), 22, '...') }}</p>
-                                        <span class="p-date">{{ $news->created_at->format('F d, Y') }}</span>
+{{--                                        <span class="p-date">{{ $news->created_at->format('F d, Y') }}</span>--}}
+                                        <span class="p-date">{{ Carbon\Carbon::parse($news->created_at)->translatedFormat('F d, Y') }}</span>
                                     </div>
                                 </div>
                             </div>

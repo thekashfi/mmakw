@@ -266,7 +266,7 @@
 														<option selected value="null">&lt;null&gt;</option>
 														@if(count($categories))
 															@foreach($categories as $category)
-																<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
+																<option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}" {{ old }}>{{ $category["name_" . app()->getLocale()] }}</option>
 															@endforeach
 														@endif
 													</select>

@@ -42,7 +42,7 @@
 
                         <div class="date-box">
                             <div class="day">{{ $career->created_at->format('d') }}</div>
-                            <div class="month">{{ strtoupper($career->created_at->format('M')) }}</div>
+                            <div class="month" {!! app()->getLocale() == 'en' ?: 'style="letter-spacing: normal;"' !!}>{{ strtoupper($career->created_at->translatedFormat('M')) }}</div>
                         </div>
 
                         <div class="post-text" {!! app()->getLocale() == 'ar' ? 'style="padding-left: 0; padding-right: 100px"' : '' !!}>

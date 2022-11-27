@@ -67,13 +67,19 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/boxes', 'AdminBoxesController', ['except' => 'destroy']);
 });
 
+//news-categories
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/news-categories/delete/{id}','AdminNewsCategoriesController@destroy');
+    Route::resource('gwc/news-categories', 'AdminNewsCategoriesController', ['except' => 'destroy']);
+});
+
 //attributes
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/attributes/delete/{id}','AdminAttributesController@destroy');
     Route::resource('gwc/attributes', 'AdminAttributesController', ['except' => 'destroy']);
 });
 
-//attributes
+//comments
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/comments/{id}/approve','AdminCommentsController@approve');
     Route::get('/gwc/comments/{id}/reject','AdminCommentsController@reject');

@@ -50,7 +50,7 @@ class AdminCareersController extends Controller
 		$settingInfo = Settings::where("keyname","setting")->first();
 
 	    $this->validate($request, [
-			'slug'     => 'nullable|min:3|max:255|string|unique:gwc_careers,slug',
+			'slug'     => 'required|min:3|max:255|string|unique:gwc_careers,slug',
 			'title_en'     => 'required|min:3|max:255|string',
 			'title_ar'     => 'required|min:3|max:255|string',
 			'description_en'   => 'required|min:3',
@@ -134,7 +134,7 @@ class AdminCareersController extends Controller
 	 $settingInfo = Settings::where("keyname","setting")->first();
 	 //field validation  
 	   $this->validate($request, [
-            'slug'     => 'nullable|min:3|max:255|string|unique:gwc_careers,slug,' . $request->id,
+            'slug'     => 'required|min:3|max:255|string|unique:gwc_careers,slug,' . $request->id,
 			'title_en'     => 'required|min:3|max:190|string',
 			'title_ar'     => 'required|min:3|max:190|string',
            'description_en'   => 'required|min:3',

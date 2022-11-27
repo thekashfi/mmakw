@@ -252,7 +252,7 @@
 													<select class="form-control" name="category_id" id="category_id">
 														<option selected value="null">&lt;null&gt;</option>
 														@foreach($categories as $category)
-															<option value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
+															<option {{ old('category_id') == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category["name_" . app()->getLocale()] }}</option>
 														@endforeach
 													</select>
 												</div>
