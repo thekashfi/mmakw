@@ -92,6 +92,12 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/service-categories', 'AdminServiceCategoriesController', ['except' => 'destroy']);
 });
 
+//footer-links
+Route::group(['middleware' => ['admin']], function() {
+    Route::get('/gwc/footer-links/delete/{id}','AdminFooterLinksController@destroy');
+    Route::resource('gwc/footer-links', 'AdminFooterLinksController', ['except' => 'destroy']);
+});
+
 //resumes
 Route::group(['middleware' => ['admin']], function() {
     Route::resource('gwc/resumes', 'AdminResumesController', ['only' => ['index', 'show']]);

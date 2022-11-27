@@ -26,20 +26,18 @@
           </div>
       </div>
 
-      <div class="col-lg-3">
-        <div class="widget widget_recent_post">
-          <h3>Main Menu</h3>
-          <ul>
-            <li><a href="{{url('/')}}">{{__('webMessage.home')}}</a></li>
-            <li><a href="{{url('/#about')}}">{{__('webMessage.aboutus')}}</a></li>
-            <li><a href="{{ url('') .'/practice/'. \App\Practice::first()->slug }}">{{__('webMessage.practicearea')}}</a></li>
-            <li><a href="{{url('/#services')}}">{{__('webMessage.services')}}</a></li>
-            <li><a href="{{url('/members')}}">{{__('webMessage.membershiplistings')}}</a></li>
-            <li><a href="{{url('/news')}}">{{__('webMessage.newsevents')}}</a></li>
-            <li><a href="{{url('/contactus')}}">{{__('webMessage.contactus')}}</a></li>
-          </ul>
+      @if(count($footer_links))
+        <div class="col-lg-3">
+          <div class="widget widget_recent_post">
+            <h3>{{__('webMessage.footermenu')}}</h3>
+            <ul>
+              @foreach($footer_links as $flink)
+                <li><a href="{!! $flink->link !!}">{{ $flink["name_" . app()->getLocale()] }}</a></li>
+              @endforeach
+            </ul>
+          </div>
         </div>
-      </div>
+      @endif
     </div>
   </div>
 

@@ -249,4 +249,5 @@ return [
 	'uploadcv'              =>'Upload CV',
 	'resume_sent'           =>'thanks for applying for the position.',
 	'applynow'              =>'Apply Now',
+    'footermenu'            =>'Footer Menu',
 ];
