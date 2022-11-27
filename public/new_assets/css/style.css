@@ -10371,7 +10371,9 @@ ul#slide-list{
 		background: #18191b !important;
 	}
 }
-
 .post-text img{
 	max-width: 100%;
+}
+.crumb {
+	display: none !important;
 }
