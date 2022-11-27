@@ -400,6 +400,17 @@
 													</div>
                                                    </div>
                                                 </div>
+
+													<div class="form-group ">
+														<div class="input-group">
+															<div class="input-group-prepend"><span class="input-group-text">{{__('adminMessage.login_url')}}</span></div>
+															<input type="text" class="form-control @if($errors->has('login_url')) is-invalid @endif" name="login_url" value="@if($settingDetails->login_url){{$settingDetails->login_url}}@endif">
+															@if($errors->has('login_url'))
+																<div class="invalid-feedback">{{ $errors->first('login_url') }}</div>
+															@endif
+														</div>
+														{{__('adminMessage.emptydisable')}}
+													</div>
                                                 
                                                 <div class="form-group">
                                                 <div class="row">

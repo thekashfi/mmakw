@@ -219,6 +219,8 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::resource('gwc/general-settings', 'AdminSettingsController');
 	Route::get('/gwc/mission','AdminSettingsController@mission');
 	Route::post('/gwc/missionpost','AdminSettingsController@missionpost')->name('missionpost');
+	Route::get('/gwc/who','AdminSettingsController@who');
+	Route::post('/gwc/whopost','AdminSettingsController@whopost')->name('whopost');
 	Route::get('/gwc/vision','AdminSettingsController@vision');
 	Route::post('/gwc/visionpost','AdminSettingsController@visionpost')->name('visionpost');
 	Route::get('/gwc/teamcontent','AdminSettingsController@teamcontent');
@@ -292,6 +294,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/contactform','webController@contactform')->name('contactform');
 	Route::get('/newsdetails/{slug}','webController@newsdetails');
 	Route::post('/submitComment','webController@submitComment');
+	Route::get('/whoweare','webController@whoweare');
 	Route::get('/mission','webController@mission');
 	Route::get('/vision','webController@vision');
 	Route::get('/practice/{slug}','webController@practicearea');

@@ -247,13 +247,25 @@ class webController extends Controller
 	}
     
 	//get mission details
-	public function mission(){
+	public function whoweare(){
 	     $settingInfo    = Settings::where("keyname","setting")->first();
 	     //get practice area 
 	     $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	     //get services  
 	     $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 		 //get members  
+	     $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	 return view('website.whoweare',compact('settingInfo','practiceareaMenus','servicesMenus','memberslists'));
+	}
+
+	//get mission details
+	public function mission(){
+	     $settingInfo    = Settings::where("keyname","setting")->first();
+	     //get practice area
+	     $practiceareaMenus = Practice::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+	     //get services
+	     $servicesMenus     = Services::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
+		 //get members
 	     $memberslists     = Memberships::where("is_active","1")->orderBy('display_order', $settingInfo->default_sort)->get();
 	 return view('website.mission',compact('settingInfo','practiceareaMenus','servicesMenus','memberslists'));
 	}

@@ -3,7 +3,7 @@
 	<!-- begin::Head -->
 	<head>
 		<meta charset="utf-8" />
-		<title>{{__('adminMessage.websiteName')}} | {{__('adminMessage.mission')}}</title>
+		<title>{{__('adminMessage.websiteName')}} | {{__('adminMessage.whoweare')}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--css files -->
 		@include('gwc.css.user')
@@ -62,7 +62,7 @@
 									<div class="kt-subheader__breadcrumbs">
 										<a href="{{url('gwc/home')}}" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
 										<span class="kt-subheader__breadcrumbs-separator"></span>
-										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.mission')}}</a>
+										<a href="javascript:;" class="kt-subheader__breadcrumbs-link">{{__('adminMessage.whoweare')}}</a>
 									</div>
 								</div>
 
@@ -94,7 +94,7 @@
                            @endif
                          @if(auth()->guard('admin')->user()->can('our-mission-edit'))
                            <form name="tFrm"  id="form_validation"  method="post"
-                          class="kt-form" enctype="multipart/form-data" action="{{route('missionpost',$settingDetails->keyname)}}">
+                          class="kt-form" enctype="multipart/form-data" action="{{route('whopost',$settingDetails->keyname)}}">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="row">
 								<div class="col-md-12">
@@ -104,7 +104,7 @@
 										<div class="kt-portlet__head">
 											<div class="kt-portlet__head-label">
 												<h3 class="kt-portlet__head-title">
-													{{__('adminMessage.mission')}}
+													{{__('adminMessage.whoweare')}}
 												</h3>
 											</div>
 										</div>
@@ -117,16 +117,16 @@
                                                 <div class="row">
 								                    <div class="col-md-6">
 													<label>{{__('adminMessage.title_en')}}</label>
-													<input type="text"  class="form-control @if($errors->has('mission_title_en')) is-invalid @endif" name="mission_title_en" placeholder="{{__('adminMessage.enter_title_en')}}" value="@if($settingDetails->mission_title_en) {{$settingDetails->mission_title_en}} @endif">
-                                                    @if($errors->has('mission_title_en'))
-                                                    <div class="invalid-feedback">{{ $errors->first('mission_title_en') }}</div>
+													<input type="text"  class="form-control @if($errors->has('who_title_en')) is-invalid @endif" name="who_title_en" placeholder="{{__('adminMessage.enter_title_en')}}" value="@if($settingDetails->who_title_en) {{$settingDetails->who_title_en}} @endif">
+                                                    @if($errors->has('who_title_en'))
+                                                    <div class="invalid-feedback">{{ $errors->first('who_title_en') }}</div>
                                                     @endif
                                                     </div>
                                                     <div class="col-md-6">
 													<label>{{__('adminMessage.title_ar')}}</label>
-													<input type="text"  class="form-control @if($errors->has('mission_title_ar')) is-invalid @endif" name="mission_title_ar" placeholder="{{__('adminMessage.enter_title_ar')}}" value="@if($settingDetails->mission_title_ar) {{$settingDetails->mission_title_ar}} @endif">
-                                                    @if($errors->has('mission_title_ar'))
-                                                    <div class="invalid-feedback">{{ $errors->first('mission_title_ar') }}</div>
+													<input type="text"  class="form-control @if($errors->has('who_title_ar')) is-invalid @endif" name="who_title_ar" placeholder="{{__('adminMessage.enter_title_ar')}}" value="@if($settingDetails->who_title_ar) {{$settingDetails->who_title_ar}} @endif">
+                                                    @if($errors->has('who_title_ar'))
+                                                    <div class="invalid-feedback">{{ $errors->first('who_title_ar') }}</div>
                                                     @endif
                                                     </div>
                                                     </div>
@@ -136,16 +136,16 @@
 
                                                 <div class="form-group">
 													<label>{{__('adminMessage.details_en')}}</label>
-													<textarea id="kt-ckeditor-1" name="mission_details_en" class="form-control  @if($errors->has('mission_details_en')) is-invalid @endif" placeholder="{{__('adminMessage.enter_mission_details_en')}}">@if($settingDetails->mission_details_en) {{$settingDetails->mission_details_en}} @endif</textarea>
-                                                    @if($errors->has('mission_details_en'))
-                                                  <div class="invalid-feedback">{{ $errors->first('mission_details_en') }}</div>
+													<textarea id="kt-ckeditor-1" name="who_details_en" class="form-control  @if($errors->has('who_details_en')) is-invalid @endif" placeholder="{{__('adminMessage.enter_details_en')}}">@if($settingDetails->who_details_en) {{$settingDetails->who_details_en}} @endif</textarea>
+                                                    @if($errors->has('who_details_en'))
+                                                  <div class="invalid-feedback">{{ $errors->first('who_details_en') }}</div>
                                                     @endif
 												</div>
                                                 <div class="form-group">
 													<label>{{__('adminMessage.details_ar')}}</label>
-													<textarea id="kt-ckeditor-2" name="mission_details_ar" class="form-control  @if($errors->has('mission_details_ar')) is-invalid @endif" placeholder="{{__('adminMessage.enter_mission_details_ar')}}">@if($settingDetails->mission_details_ar) {{$settingDetails->mission_details_ar}} @endif</textarea>
-                                                    @if($errors->has('mission_details_ar'))
-                                                  <div class="invalid-feedback">{{ $errors->first('mission_details_ar') }}</div>
+													<textarea id="kt-ckeditor-2" name="who_details_ar" class="form-control  @if($errors->has('who_details_ar')) is-invalid @endif" placeholder="{{__('adminMessage.enter_details_ar')}}">@if($settingDetails->who_details_ar) {{$settingDetails->who_details_ar}} @endif</textarea>
+                                                    @if($errors->has('who_details_ar'))
+                                                  <div class="invalid-feedback">{{ $errors->first('who_details_ar') }}</div>
                                                     @endif
 												</div>
 

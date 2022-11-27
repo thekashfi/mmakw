@@ -228,7 +228,7 @@ return [
 	'submit'                =>'Submit',
 	'footercontactusblue'   =>'Do you need Best Services?',
 	'footercontactusbutton' =>'Contact Us Now',
-	'whoweare'              =>'who we are',
+	'whoweare'              =>'Who We Are',
 	'all_services'          =>'All Services',
 	'more_details'          =>'More Details',
 	'contact_info'          =>'Contact Info',
@@ -250,4 +250,5 @@ return [
 	'resume_sent'           =>'thanks for applying for the position.',
 	'applynow'              =>'Apply Now',
     'footermenu'            =>'Footer Menu',
+    'login'            =>'Login',
 ];

@@ -68,6 +68,7 @@ class AdminSettingsController extends Controller
 			'footer_about_en' => 'max:500|string',
 			'footer_about_ar' => 'max:500|string',
 			'fax' => 'max:100|string',
+            'loginurl' => 'nullable|max:100|string',
         ]);
 		
 		 //check if water status is on , image required
@@ -166,6 +167,7 @@ class AdminSettingsController extends Controller
 		$setting->mobile=$request->input('mobile');
 		$setting->phone=$request->input('phone');
 		$setting->fax=$request->input('fax');
+		$setting->login_url= empty($request->input('login_url')) ? null : $request->input('login_url');
 		//$setting->is_active=!empty($request->input('is_active'))?$request->input('is_active'):'0';
 		$setting->logo=$logoName;
 		$setting->emaillogo=$emaillogoName;
@@ -462,7 +464,44 @@ class AdminSettingsController extends Controller
 		return redirect('/gwc/mission')->with('message-success','Information is updated successfully');
 		
 	}
-	
+
+	//who
+	public function who(){
+	$settingDetails = Settings::where('keyname','setting')->first();
+	return view('gwc.adminwhoForm',compact('settingDetails'));
+	}
+
+	public function whopost(Request $request){
+	    $keyname = "setting";
+	    if(empty($keyname) || $keyname<>"setting"){
+		return redirect('/gwc/who')->with('message-error','Internal error found. Please reload the page and try again.');
+		}
+
+	    //field validation
+	    $this->validate($request,[
+            'who_title_en'   => 'min:3|max:150|string',
+			'who_title_ar'   => 'min:3|max:150|string',
+			'who_details_en' => 'required|min:3|string',
+			'who_details_ar' => 'required|min:3|string'
+        ]);
+
+		$setting = Settings::where("keyname","setting")->first();
+
+		$setting->who_title_en=$request->input('who_title_en');
+		$setting->who_title_ar=$request->input('who_title_ar');
+		$setting->who_details_en=$request->input('who_details_en');
+		$setting->who_details_ar=$request->input('who_details_ar');
+		$setting->save();
+		//save logs
+		$key_name   = "setting";
+		$key_id     = $setting->id;
+		$message    = "Who We Are information is updated";
+		$created_by = Auth::guard('admin')->user()->id;
+		Common::saveLogs($key_name,$key_id,$message,$created_by);
+		//end save logs
+		return redirect('/gwc/who')->with('message-success','Information is updated successfully');
+	}
+
 	//vision
 	public function vision(){
 	$settingDetails = Settings::where('keyname','setting')->first();

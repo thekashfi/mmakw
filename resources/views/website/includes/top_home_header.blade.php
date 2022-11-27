@@ -41,7 +41,7 @@
                         <nav class="md-flex">
                             <ul id="mainmenu">
                                 <li ><a  href="{{url('/')}}">{{__('webMessage.home')}}</a></li>
-                                <li class="menu-item-has-children"><a href="{{url('/#about')}}">{{__('webMessage.whoweare')}}</a>
+                                <li class="menu-item-has-children"><a href="{{url('/whoweare')}}">{{__('webMessage.whoweare')}}</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{url('/mission')}}">{{__('webMessage.mission')}}</a></li>
                                         <li><a href="{{url('/vision')}}">{{__('webMessage.vision')}}</a></li>
@@ -111,6 +111,9 @@
                                         @endif
                                     @endif
 {{--                                @endif--}}
+                                @if(!empty($settingInfo->login_url))
+                                    <li><a href="{{ $settingInfo->login_url }}">{{__('webMessage.login')}}</a></li>
+                                @endif
                             </ul>
                         </nav>
                     </div>

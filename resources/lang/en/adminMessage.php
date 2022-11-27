@@ -437,4 +437,7 @@ return [
     'listfooterlinks'           => 'List Links',
     'footerlinkslisting'           => 'Footer Links Listing',
     'editfooterlink'           => 'Edit Footer Link ',
+    'whoweare'              => 'Who We Are',
+    'login_url'              => 'Login Url',
+    'emptydisable'              => 'Leave empty for disable it.',
 ];
