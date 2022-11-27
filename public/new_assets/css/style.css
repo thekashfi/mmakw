@@ -10359,3 +10359,19 @@ ul#slide-list{
 	    padding: 5px;
 	}
 	}
+}
+
+/* mmakw site styles */
+@media screen and (min-width: 993px) {
+	ul#mainmenu a{
+		padding-left: 8px;
+	}
+	.new-header {
+		height: 80px !important;
+		background: #18191b !important;
+	}
+}
+
+.post-text img{
+	max-width: 100%;
+}
