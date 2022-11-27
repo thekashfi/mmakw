@@ -10371,6 +10371,16 @@ ul#slide-list{
 		background: #18191b !important;
 	}
 }
+@media screen and (min-width: 1201px) {
+	.header-wide {
+		max-width: 92%;
+	}
+}
+@media screen and (min-width: 1450px) {
+	.header-wide {
+		max-width: 1450px;
+	}
+}
 .post-text img{
 	max-width: 100%;
 }

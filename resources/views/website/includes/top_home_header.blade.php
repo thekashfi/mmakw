@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container header-wide">
         <div class="row">
             <div class="col-md-12">
                 <div class="md-flex">
@@ -99,6 +99,11 @@
 {{--                                        @endif--}}
 {{--                                    @endif--}}
 {{--                                @else--}}
+
+                                    @if(!empty($settingInfo->login_url))
+                                        <li><a href="{{ $settingInfo->login_url }}">{{__('webMessage.login')}}</a></li>
+                                    @endif
+
                                     @if(app()->getLocale()=='en')
 {{--                                        <li><a href="{{ url('/account') }}" >{{__('webMessage.myaccount_txt')}}</a></li>--}}
                                         @if($settingInfo->is_lang==1)
@@ -111,9 +116,6 @@
                                         @endif
                                     @endif
 {{--                                @endif--}}
-                                @if(!empty($settingInfo->login_url))
-                                    <li><a href="{{ $settingInfo->login_url }}">{{__('webMessage.login')}}</a></li>
-                                @endif
                             </ul>
                         </nav>
                     </div>
