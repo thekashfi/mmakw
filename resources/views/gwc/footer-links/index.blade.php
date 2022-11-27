@@ -176,7 +176,7 @@
                                                 <img src="{!! url('uploads/footer-links/thumb/'.$link->image) !!}" width="40">
                                                 @endif</td>
 												<td>
-                                                <span class="kt-switch"><label><input value="{{$link->id}}" {{!empty($link->is_active)?'checked':''}} type="checkbox"  id="services" class="change_status"><span></span></label></span>
+                                                <span class="kt-switch"><label><input value="{{$link->id}}" {{!empty($link->is_active)?'checked':''}} type="checkbox"  id="footer-links" class="change_status"><span></span></label></span>
                                                 </td>
 												<td>{!! $link->created_at !!}</td>
 												<td>{!! $link->updated_at !!}</td>

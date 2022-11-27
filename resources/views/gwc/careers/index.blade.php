@@ -158,7 +158,7 @@
                                                 <img src="{!! url('uploads/careers/thumb/'.$career->image) !!}" width="40">
                                                 @endif</td>
 												<td>
-                                                <span class="kt-switch"><label><input value="{{$career->id}}" {{!empty($career->is_active)?'checked':''}} type="checkbox"  id="newsevents" class="change_status"><span></span></label></span>
+                                                <span class="kt-switch"><label><input value="{{$career->id}}" {{!empty($career->is_active)?'checked':''}} type="checkbox"  id="careers" class="change_status"><span></span></label></span>
                                                 </td>
 												<td>{!! $career->created_at !!}</td>
 												<td>{!! $career->updated_at !!}</td>

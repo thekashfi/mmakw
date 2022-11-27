@@ -176,7 +176,7 @@
                                                 <img src="{!! url('uploads/boxes/thumb/'.$box->image) !!}" width="40">
                                                 @endif</td>
 												<td>
-                                                <span class="kt-switch"><label><input value="{{$box->id}}" {{!empty($box->is_active)?'checked':''}} type="checkbox"  id="services" class="change_status"><span></span></label></span>
+                                                <span class="kt-switch"><label><input value="{{$box->id}}" {{!empty($box->is_active)?'checked':''}} type="checkbox"  id="boxes" class="change_status"><span></span></label></span>
                                                 </td>
 												<td>{!! $box->created_at !!}</td>
 												<td>{!! $box->updated_at !!}</td>

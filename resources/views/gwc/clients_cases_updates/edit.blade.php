@@ -134,7 +134,7 @@
 													<div class="col-2">
 														<span class="kt-switch">
 															<label>
-																<input type="checkbox" {{$editcases->is_active==1?'checked':''}}  name="is_active"  id="is_active" value="1"/>
+																<input type="checkbox" {{ old('is_active', $editcases->is_active) ? 'checked' : '' }}  name="is_active"  id="is_active" value="1"/>
 																<span></span>
 															</label>
 														</span>

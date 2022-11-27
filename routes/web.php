@@ -19,13 +19,13 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::get('/gwc/roles/destroy/{id}','RoleController@destroy');
 });
 
-//Categories
+//practices
 Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/practice/{id}','AdminPracticeController@update');
 	Route::get('/gwc/practice/deletePracticeImage/{id}','AdminPracticeController@deleteImage');
 	Route::get('/gwc/practice/deletePracticebImage/{id}','AdminPracticeController@deletebImage');
 	Route::get('/gwc/practice/delete/{id}','AdminPracticeController@destroy');
-	Route::get('/gwc/practice/ajax/{id}','AdminPracticeController@updateStatusAjax');
+	Route::get('/admin/practice/ajax/{id}','AdminPracticeController@updateStatusAjax');
 	Route::get('/gwc/practice/csv','AdminPracticeController@downloadCSV');
 	Route::get('/gwc/practice/pdf','AdminPracticeController@downloadPDF');
 	Route::resource('gwc/practice', 'AdminPracticeController');
@@ -45,7 +45,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/newsevents/{id}','AdminNewsEventsController@update');
 	Route::get('/gwc/newsevents/deletenewseventsImage/{id}','AdminNewsEventsController@deleteImage');
 	Route::get('/gwc/newsevents/delete/{id}','AdminNewsEventsController@destroy');
-	Route::get('/gwc/newsevents/ajax/{id}','AdminNewsEventsController@updateStatusAjax');
+	Route::get('/admin/newsevents/ajax/{id}','AdminNewsEventsController@updateStatusAjax');
 	Route::get('/gwc/newsevents/pdf','AdminNewsEventsController@downloadPDF');
 	Route::get('/gwc/survey','AdminUserController@survey');
 	Route::get('/gwc/survey/delete/{id}','AdminUserController@deleteSurvey');
@@ -58,12 +58,14 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/slides/deleteslideImage/{id}','AdminSlidesController@deleteImage');
     Route::get('/gwc/slides/deleteslideVideo/{id}','AdminSlidesController@deleteVideo');
     Route::get('/gwc/slides/delete/{id}','AdminSlidesController@destroy');
+    Route::get('/admin/slides/ajax/{id}','AdminSlidesController@updateStatusAjax');
     Route::resource('gwc/slides', 'AdminSlidesController', ['except' => 'destroy']);
 });
 
 //boxes
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/boxes/delete/{id}','AdminBoxesController@destroy');
+    Route::get('/admin/boxes/ajax/{id}','AdminBoxesController@updateStatusAjax');
     Route::resource('gwc/boxes', 'AdminBoxesController', ['except' => 'destroy']);
 });
 
@@ -76,6 +78,7 @@ Route::group(['middleware' => ['admin']], function() {
 //attributes
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/attributes/delete/{id}','AdminAttributesController@destroy');
+    Route::get('/admin/attributes/ajax/{id}','AdminAttributesController@updateStatusAjax');
     Route::resource('gwc/attributes', 'AdminAttributesController', ['except' => 'destroy']);
 });
 
@@ -95,6 +98,7 @@ Route::group(['middleware' => ['admin']], function() {
 //footer-links
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/footer-links/delete/{id}','AdminFooterLinksController@destroy');
+    Route::get('/admin/footer-links/ajax/{id}','AdminFooterLinksController@updateStatusAjax');
     Route::resource('gwc/footer-links', 'AdminFooterLinksController', ['except' => 'destroy']);
 });
 
@@ -108,6 +112,7 @@ Route::post('/apply','AdminResumesController@apply');
 Route::group(['middleware' => ['admin']], function() {
     Route::get('/gwc/careers/deletecareersImage/{id}','AdminCareersController@deleteImage');
     Route::get('/gwc/careers/delete/{id}','AdminCareersController@destroy');
+    Route::get('/admin/careers/ajax/{id}','AdminCareersController@updateStatusAjax');
     Route::resource('gwc/careers', 'AdminCareersController', ['except' => 'destroy']);
 });
 
@@ -124,7 +129,7 @@ Route::group(['middleware' => ['admin']], function(){
 	Route::get('/gwc/contactus/subjects/delete/{id}','AdminInboxController@destroySubjects');
 	Route::get('/gwc/contactus/{id}/view','AdminInboxController@view');
 	Route::get('/gwc/contactus/inbox/delete/{id}','AdminInboxController@destroy');
-	Route::get('/gwc/subjects/ajax/{id}','AdminInboxController@updateStatusAjax');
+	Route::get('/admin/subjects/ajax/{id}','AdminInboxController@updateStatusAjax');
 	Route::resource('gwc/contactus/inbox', 'AdminInboxController');
 });
 //clients
@@ -132,7 +137,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/clients/{id}','AdminClientsController@update');
 	Route::get('/gwc/clients/deleteclientsImage/{id}','AdminClientsController@deleteImage');
 	Route::get('/gwc/clients/delete/{id}','AdminClientsController@destroy');
-	Route::get('/gwc/clients/ajax/{id}','AdminClientsController@updateStatusAjax');
+	Route::get('/admin/clients/ajax/{id}','AdminClientsController@updateStatusAjax');
 	Route::get('/gwc/clients/{id}/view','AdminClientsController@view');
 	Route::get('/gwc/clients/pdf','AdminClientsController@downloadPDF');
 	Route::get('/gwc/clients/changepass/{id}','AdminClientsController@changepass');
@@ -148,7 +153,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/memberships/{id}','AdminMembershipsController@update');
 	Route::get('/gwc/memberships/deletemembershipsImage/{id}','AdminMembershipsController@deleteImage');
 	Route::get('/gwc/memberships/delete/{id}','AdminMembershipsController@destroy');
-	Route::get('/gwc/memberships/ajax/{id}','AdminMembershipsController@updateStatusAjax');
+	Route::get('/admin/memberships/ajax/{id}','AdminMembershipsController@updateStatusAjax');
 	Route::get('/gwc/memberships/{id}/view','AdminMembershipsController@view');
 	Route::resource('gwc/memberships', 'AdminMembershipsController');
 });
@@ -157,7 +162,7 @@ Route::group(['middleware' => ['admin']], function() {
 Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/casetype/{id}','AdminCaseTypeController@update');
 	Route::get('/gwc/casetype/delete/{id}','AdminCaseTypeController@destroy');
-	Route::get('/gwc/casetype/ajax/{id}','AdminCaseTypeController@updateStatusAjax');
+	Route::get('/admin/casetype/ajax/{id}','AdminCaseTypeController@updateStatusAjax');
 	Route::resource('gwc/casetype', 'AdminCaseTypeController');
 });
 //cases
@@ -173,7 +178,7 @@ Route::group(['middleware' => ['admin']], function() {
 	
 	Route::get('/gwc/clients_cases/{client_id}/delete/{id}','AdminCasesController@destroy');
 	Route::get('/gwc/clients_cases/{case_id}/deleteattach/{id}','AdminCasesController@destroyAttach');
-	Route::get('/gwc/clients_cases/ajax/{id}','AdminCasesController@updateStatusAjax');
+	Route::get('/admin/clients_cases/ajax/{id}','AdminCasesController@updateStatusAjax');
 	Route::get('/gwc/clients_cases/{client_id}/create', 'AdminCasesController@create')->name('createCase');
 	Route::post('/gwc/clients_cases/{client_id}/create', 'AdminCasesController@store')->name('createCase');
 	Route::get('/gwc/clients_cases/{client_id}','AdminCasesController@index');
@@ -192,7 +197,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/clients_cases_updates/{id}/edit','AdminCasesUpdatesController@update');
 	Route::get('/gwc/clients_cases_updates/{case_id}/delete/{id}','AdminCasesUpdatesController@destroy');
 	Route::get('/gwc/clients_cases_updates/{case_id}/deleteattach/{id}','AdminCasesUpdatesController@destroyAttach');
-	Route::get('/gwc/clients_cases_updates/ajax/{id}','AdminCasesUpdatesController@updateStatusAjax');
+	Route::get('/admin/clients_cases_updates/ajax/{id}','AdminCasesUpdatesController@updateStatusAjax');
 	Route::get('/gwc/clients_cases_updates/{case_id}/create', 'AdminCasesUpdatesController@create')->name('createCaseUpdate');
 	Route::post('/gwc/clients_cases_updates/{case_id}/create', 'AdminCasesUpdatesController@store')->name('createCaseUpdate');
 	Route::get('/gwc/clients_cases_updates/{case_id}','AdminCasesUpdatesController@index');
@@ -226,7 +231,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/teams/{id}','AdminTeamsController@update');
 	Route::get('/gwc/teams/deleteteamsImage/{id}','AdminTeamsController@deleteImage');
 	Route::get('/gwc/teams/delete/{id}','AdminTeamsController@destroy');
-	Route::get('/gwc/teams/ajax/{id}','AdminTeamsController@updateStatusAjax');
+	Route::get('/admin/teams/ajax/{id}','AdminTeamsController@updateStatusAjax');
 	Route::get('/gwc/teams/{id}/view','AdminTeamsController@view');
 	Route::get('/gwc/teams/pdf','AdminTeamsController@downloadPDF');
 	Route::resource('gwc/teams', 'AdminTeamsController');
@@ -255,7 +260,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/menus/new', 'AdminMenuController@AddRecord')->name('newmenu');
 	Route::get('/gwc/menus/edit/{id}', 'AdminMenuController@adminMenusForm')->middleware('admin');
 	Route::get('/gwc/menus/delete/{id}', 'AdminMenuController@deleteMenus')->middleware('admin');
-	Route::get('/gwc/menus/ajax/{id}', 'AdminMenuController@updateStatusAjax')->middleware('admin');
+	Route::get('/admin/menus/ajax/{id}', 'AdminMenuController@updateStatusAjax')->middleware('admin');
 	//users
 	Route::get('/gwc/users', 'AdminUserController@index')->middleware('admin');;
 	Route::post('/gwc/users', 'AdminUserController@index')->name('usersearch');
@@ -267,7 +272,7 @@ Route::group(['middleware' => ['admin']], function() {
 	Route::post('/gwc/users/save', 'AdminUserController@adminSaveProfile')->name('adminSaveProfile');
 	Route::post('/gwc/users/change/pass', 'AdminUserController@adminChangePass')->name('adminChangePass');
 	Route::get('/gwc/users/delete/{id}', 'AdminUserController@deleteUser')->middleware('admin');
-	Route::get('/gwc/users/ajax/{id}', 'AdminUserController@updateStatusAjax')->middleware('admin');
+	Route::get('/admin/users/ajax/{id}', 'AdminUserController@updateStatusAjax')->middleware('admin');
 	Route::get('/gwc/editprofile', 'AdminUserController@editprofile')->middleware('admin');
 	
 	Route::post('/gwc/editprofile/save', 'AdminUserController@adminSaveEditProfile')->name('adminSaveEditProfile');

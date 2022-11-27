@@ -176,7 +176,7 @@
                                                 <img src="{!! url('uploads/slides/thumb/'.$slide->image) !!}" width="40">
                                                 @endif</td>
 												<td>
-                                                <span class="kt-switch"><label><input value="{{$slide->id}}" {{!empty($slide->is_active)?'checked':''}} type="checkbox"  id="services" class="change_status"><span></span></label></span>
+                                                <span class="kt-switch"><label><input value="{{$slide->id}}" {{!empty($slide->is_active)?'checked':''}} type="checkbox"  id="slides" class="change_status"><span></span></label></span>
                                                 </td>
 												<td>{!! $slide->created_at !!}</td>
 												<td>{!! $slide->updated_at !!}</td>

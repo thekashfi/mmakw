@@ -116,4 +116,27 @@ class AdminFooterLinksController extends Controller
         $link->delete();
         return redirect()->back()->with('message-success','footer-link is deleted successfully');
     }
+
+    //update status
+    public function updateStatusAjax(Request $request)
+    {
+        $recDetails = FooterLink::where('id',$request->id)->first();
+        if($recDetails['is_active']==1){
+            $active=0;
+        }else{
+            $active=1;
+        }
+
+        //save logs
+        $key_name   = "footer-links";
+        $key_id     = $recDetails->id;
+        $message    = "Status is changed for footer-link (".$recDetails->title_en.") to ".$active;
+        $created_by = Auth::guard('admin')->user()->id;
+        Common::saveLogs($key_name,$key_id,$message,$created_by);
+        //end save logs
+
+        $recDetails->is_active=$active;
+        $recDetails->save();
+        return ['status'=>200,'message'=>'Status is modified successfully'];
+    }
 }

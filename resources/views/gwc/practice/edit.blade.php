@@ -140,7 +140,7 @@
 													<div class="col-3">
 														<span class="kt-switch">
 															<label>
-																<input type="checkbox" {{$editpractice->is_active==1?'checked':''}} name="is_active"  id="is_active" value="1"/>
+																<input type="checkbox" {{ old('is_active', $editpractice->is_active) ? 'checked' : '' }} name="is_active"  id="is_active" value="1"/>
 																<span></span>
 															</label>
 														</span>

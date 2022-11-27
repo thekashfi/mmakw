@@ -193,7 +193,7 @@
                                                     <div class="col-3">
 														<span class="kt-switch">
 															<label>
-																<input type="checkbox" checked="checked" name="is_active"  id="is_active" value="{{ old('is_active', $attribute->is_active) }}"/>
+																<input type="checkbox" checked="checked" name="is_active"  id="is_active" {{ old('is_active', $attribute->is_active) ? 'checked' : '' }}/>
 																<span></span>
 															</label>
 														</span>

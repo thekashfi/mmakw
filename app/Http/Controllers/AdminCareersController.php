@@ -281,7 +281,7 @@ class AdminCareersController extends Controller
     //update status
 	public function updateStatusAjax(Request $request)
     {
-		$recDetails = NewsEvents::where('id',$request->id)->first(); 
+		$recDetails = Career::where('id',$request->id)->first();
 		if($recDetails['is_active']==1){
 			$active=0;
 		}else{
@@ -289,9 +289,9 @@ class AdminCareersController extends Controller
 		}
 		
 		//save logs
-		$key_name   = "news";
+		$key_name   = "careers";
 		$key_id     = $recDetails->id;
-		$message    = "news & events status is changed to ".$active." (".$recDetails->title_en.")";
+		$message    = "career status is changed to ".$active." (".$recDetails->title_en.")";
 		$created_by = Auth::guard('admin')->user()->id;
 		Common::saveLogs($key_name,$key_id,$message,$created_by);
 		//end save logs
@@ -300,6 +300,5 @@ class AdminCareersController extends Controller
 		$recDetails->is_active=$active;
 		$recDetails->save();
 		return ['status'=>200,'message'=>'Status is modified successfully'];
-	} 
-	
+	}
 }
