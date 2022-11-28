@@ -6,7 +6,7 @@
 <body>
 @php
 $settingInfo = App\Http\Controllers\webController::getSettings();
-@endphp   
+@endphp
 <div style="margin-left:10%; margin-right:10%;">        
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tbody>

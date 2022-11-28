@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Box;
+use App\Career;
+use App\Mail\CVMail;
 use App\Resume;
 use App\ServiceCategory;
 use App\Services;
@@ -11,6 +13,7 @@ use App\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -39,6 +42,7 @@ class AdminResumesController extends Controller
                 ->withInput();
         }
 
+        $fileName = null;
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '-' . $file->getClientOriginalName();
@@ -48,6 +52,9 @@ class AdminResumesController extends Controller
         $request = new Request($request->all());
         $request->merge(['file' => $fileName, 'message' => strip_tags($request->message)]);
         $resume = Resume::create($request->all());
+
+        $request->merge(['career' => Career::find($request->career_id)]);
+        Mail::to('info@mmakw.com')->send(new CVMail($request->all()));
 
         return redirect()->to(url()->previous() . "#comment-form-wrapper")->with('message-success',trans('webMessage.resume_sent'));
     }
